@@ -8,3 +8,4 @@ target/
 
 # IDEA config files
 .idea/
+*.iml
