@@ -1,6 +1,6 @@
 # Sports Team Website
 
-This is a Springboot application that serves a static website and a SpringMVC REST API. 
+This is a Spring Boot application that serves a static website and a SpringMVC REST API. 
 
 ## Installation Steps
 
@@ -26,5 +26,11 @@ This is a Springboot application that serves a static website and a SpringMVC RE
 - You should be able to run the project now by clicking on the green play icon directly next to the configuration dropdown in the top right area.
 - If you didn't receive any errors in the terminal,  navigate to http://localhost:8080 in your browser.
 - You should now see "Sports Team Website up and running!"
+
+## Enabling Live Reloading/Restarts
+When you save a static file in the src/main/resources/static directory, the changes will not automatically show up when you refresh your browser. To enable this, you must install the dev-tools and make a couple of configurations in your project.
+
+Here's a great video tutorial on how to do that: https://www.youtube.com/watch?v=VWF7vCJSqrA
+
 
 
