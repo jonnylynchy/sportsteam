@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -9,8 +9,8 @@
     <link rel="icon" href="favicon.ico"/>
     <title>Sports Team Website</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"></link>
 </head>
 <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search"></input>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -58,6 +58,18 @@
         </div>
 
         <h2>Teams</h2>
+        <i>(from viewmodel)</i>
+        <div class="teams-vm">
+            <ul>
+               <li th:each="team: ${teams}" th:attr="id=${team.id}">
+                   <b th:text="${team.name}"></b><br />
+                   <span th:text="${team.description}"></span>
+               </li>
+            </ul>
+        </div>
+
+        <h2>Teams</h2>
+        <i>(from rest api via javascript)</i>
         <div class="teams"></div>
 
     </div>
@@ -70,6 +82,6 @@
             crossorigin="anonymous"></script>
 
     <!-- TEMP TO JUST SHOW WE CAN FETCH SOME JSON FROM API -->
-    <script src="js/app.js"></script>
+    <script th:src="@{/js/app.js}"></script>
 </body>
 </html>
