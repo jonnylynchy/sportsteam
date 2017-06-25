@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="teams" type="java.util.List<java3.model.Team>"*/-->
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -9,8 +10,8 @@
     <link rel="icon" href="favicon.ico"/>
     <title>Sports Team Website</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"></link>
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 </head>
 <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
@@ -19,7 +20,7 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">SportsWeb</a>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
@@ -42,10 +43,19 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search"></input>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <p class="navbar-text navbar-right">
+                <span th:utext="${userName}"></span>&nbsp;
+                <!-- If user is logged in, show logout button -->
+                <form th:if="${user}" th:action="@{/logout}" method="get">
+                    <button class="btn btn-md btn-danger btn-block" name="registration"
+                            type="Submit">Logout</button>
+                </form>
+                <!-- If user is anonymous, show login button -->
+                <form th:unless="${user}" th:action="@{/login}" method="get">
+                    <button class="btn btn-md btn-success btn-block" name="registration"
+                            type="Submit">Login</button>
+                </form>
+            </p>
         </div>
     </nav>
 
@@ -53,24 +63,25 @@
 
         <div class="starter-template">
             <h1>Sports Team Website</h1>
-            <p class="lead">Amazing Lacrosse Team Website with stellar features like... stuff.</p>
-            <p>And stuff like that...</p>
+            <p class="lead">Amazing Lacrosse Team Website with stellar features.</p>
         </div>
 
-        <h2>Teams</h2>
-        <i>(from viewmodel)</i>
-        <div class="teams-vm">
-            <ul>
-               <li th:each="team: ${teams}" th:attr="id=${team.id}">
-                   <b th:text="${team.name}"></b><br />
-                   <span th:text="${team.description}"></span>
-               </li>
-            </ul>
-        </div>
+        <div th:if="${user}">
+            <h2>Teams</h2>
+            <i>(from viewmodel)</i>
+            <div class="teams-vm">
+                <ul>
+                    <li th:each="team: ${teams}" th:attr="id=${team.id}">
+                        <b th:text="${team.name}"></b><br />
+                        <span th:text="${team.description}"></span>
+                    </li>
+                </ul>
+            </div>
 
-        <h2>Teams</h2>
-        <i>(from rest api via javascript)</i>
-        <div class="teams"></div>
+            <h2>Teams</h2>
+            <i>(from rest api via javascript)</i>
+            <div class="teams"></div>
+        </div>
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
