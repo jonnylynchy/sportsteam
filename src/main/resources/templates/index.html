@@ -1,66 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--/*@thymesVar id="teams" type="java.util.List<java3.model.Team>"*/-->
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <link rel="icon" href="favicon.ico"/>
-    <title>Sports Team Website</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
-</head>
+<head lang="en" th:replace="fragments/head :: head"> </head>
 <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">SportsWeb</a>
-
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
-            <p class="navbar-text navbar-right">
-                <span th:utext="${userName}"></span>&nbsp;
-                <!-- If user is logged in, show logout button -->
-                <form th:if="${user}" th:action="@{/logout}" method="get">
-                    <button class="btn btn-md btn-danger btn-block" name="registration"
-                            type="Submit">Logout</button>
-                </form>
-                <!-- If user is anonymous, show login button -->
-                <form th:unless="${user}" th:action="@{/login}" method="get">
-                    <button class="btn btn-md btn-success btn-block" name="registration"
-                            type="Submit">Login</button>
-                </form>
-            </p>
-        </div>
-    </nav>
-
+    <th:block th:replace="fragments/header :: header"></th:block>
     <div class="container">
-
         <div class="starter-template">
             <h1>Sports Team Website</h1>
             <p class="lead">Amazing Lacrosse Team Website with stellar features.</p>
@@ -82,17 +26,7 @@
             <i>(from rest api via javascript)</i>
             <div class="teams"></div>
         </div>
-
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-            crossorigin="anonymous"></script>
-
-    <!-- TEMP TO JUST SHOW WE CAN FETCH SOME JSON FROM API -->
-    <script th:src="@{/js/app.js}"></script>
+    <th:block th:replace="fragments/footer :: footer"></th:block>
 </body>
 </html>
