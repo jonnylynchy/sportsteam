@@ -8,8 +8,9 @@ CREATE TABLE `role` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 INSERT INTO `role` VALUES (1,'ADMIN');
-INSERT INTO `role` VALUES (2,'CAPTAIN');
-INSERT INTO `role` VALUES (3,'PLAYER');
+INSERT INTO `role` VALUES (2,'LEAGUE_MANAGER');
+INSERT INTO `role` VALUES (3,'CAPTAIN');
+INSERT INTO `role` VALUES (4,'PLAYER');
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

@@ -49,6 +49,7 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+            <version>4.2.0</version>
         </dependency>
 
         <dependency>
@@ -72,4 +73,18 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>4.2.0</version>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/sports-web</url>
+                    <user>root</user>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
