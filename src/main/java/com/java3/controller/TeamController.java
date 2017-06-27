@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/")
 public class TeamController {
-    @RequestMapping(value = "teams", method = RequestMethod.GET)
+    @RequestMapping(value = "teams", method =RequestMethod.GET )
     public List<Team> list() {
         return TeamsStub.list();
     }

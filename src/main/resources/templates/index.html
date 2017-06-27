@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--/*@thymesVar id="teams" type="java.util.List<java3.model.Team>"*/-->
-<head lang="en" th:replace="fragments/head :: head"> </head>
+<head lang="en" th:replace="fragments/head :: head"></head>
 <body>
     <th:block th:replace="fragments/header :: header"></th:block>
     <div class="container">
@@ -13,6 +12,7 @@
         <div th:if="${user}">
             <h2>Teams</h2>
             <i>(from viewmodel)</i>
+            <!-- This list of teams comes from viewmodel in controller/HomeController-->
             <div class="teams-vm">
                 <ul>
                     <li th:each="team: ${teams}" th:attr="id=${team.id}">
@@ -22,6 +22,7 @@
                 </ul>
             </div>
 
+            <!-- This list of teams comes from javascript calling the rest api and rendering in html-->
             <h2>Teams</h2>
             <i>(from rest api via javascript)</i>
             <div class="teams"></div>
