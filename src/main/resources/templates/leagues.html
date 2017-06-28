@@ -5,10 +5,12 @@
 <th:block th:replace="fragments/header :: header"></th:block>
 <div class="container">
     <div th:if="${user}">
-
+        <div class="alert alert-success" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
         <p>
             <div class="btn-toolbar float-right">
-                <button type="button" class="btn btn-primary">Add New</button>
+                <form th:action="@{/leagues/add}" method="get">
+                    <button class="btn btn-primary" type="Submit">Add New</button>
+                </form>
             </div>
             <h2>Leagues</h2>
         </p>

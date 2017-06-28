@@ -1,7 +1,11 @@
 package com.java3.model;
 
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -16,7 +20,10 @@ public class League {
     @Column(name = "league_id")
     private int leagueId;
 
+    @NotEmpty(message = "*Please provide a label")
     private String label;
+
+    @NotEmpty(message = "*Please provide a description")
     private String description;
 
     @Column(name = "created_at")
@@ -24,6 +31,7 @@ public class League {
 
     @ManyToOne
     @JoinColumn(name = "type_id")
+    @NotNull(message = "*Please provide a league type")
     private LeagueType leagueType;
 
     public League() { }

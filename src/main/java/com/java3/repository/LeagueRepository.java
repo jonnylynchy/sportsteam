@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("leagueRepositoryMain")
 public interface LeagueRepository extends JpaRepository<League, Integer> {
+    League findLeagueByLabel(String label);
 }

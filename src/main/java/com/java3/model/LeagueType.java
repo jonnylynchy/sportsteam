@@ -14,7 +14,7 @@ public class LeagueType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "type_id")
+    @JoinColumn(name = "type_id")
     private int typeId;
 
     @Column(name = "label")
