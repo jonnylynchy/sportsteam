@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <body>
         <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top" th:fragment="header">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -31,7 +33,7 @@
                 </ul>
                 <!-- If user is logged in, show logout button -->
                 <ul class="navbar-nav navbar-right">
-                    <li><span class="navbar-text" th:utext="${userName}"></span>&nbsp;</li>
+                    <li><span class="navbar-text" th:utext="${authUserName}"></span>&nbsp;</li>
                     <li th:if="${user}">
                         <form class="navbar-form" th:action="@{/logout}" method="get">
                             <button class="btn btn-md btn-danger btn-block" name="registration"
