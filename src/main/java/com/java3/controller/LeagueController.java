@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,7 +35,7 @@ public class LeagueController {
     @RequestMapping(value={"/leagues"})
     public ModelAndView index() {
         ModelAndView viewModel = new ModelAndView();
-        viewModel.setViewName("leagues");
+        viewModel.setViewName("leagues/leagues");
         List<League> leagueList = leagueRepository.findAll();
         viewModel.addObject("leagues", leagueList);
 
@@ -44,7 +45,7 @@ public class LeagueController {
     @RequestMapping(value="/leagues/add", method = RequestMethod.GET)
     public ModelAndView leagueNew() {
         ModelAndView viewModel = new ModelAndView();
-        viewModel.setViewName("league-new");
+        viewModel.setViewName("leagues/league-new");
 
         League league = new League();
         viewModel.addObject("league", league);
@@ -55,22 +56,38 @@ public class LeagueController {
         return viewModel;
     }
 
-    @RequestMapping(value = "/leagues/add", method = RequestMethod.POST)
+    @RequestMapping(value="/leagues/{id}", method = RequestMethod.GET)
+    public ModelAndView leagueEdit(@PathVariable("id") int id) {
+        ModelAndView viewModel = new ModelAndView();
+        viewModel.setViewName("leagues/league-edit");
+
+        League league = leagueRepository.findOne(id);
+        viewModel.addObject("league", league);
+
+        List<LeagueType> leagueTypes = leagueTypeRepository.findAll();
+        viewModel.addObject("leagueTypes", leagueTypes);
+
+        return viewModel;
+    }
+
+    @RequestMapping(value="/leagues/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView leagueArchive(@PathVariable("id") int id, RedirectAttributes redirectAttrs) {
+        League league = leagueRepository.findOne(id);
+        leagueRepository.delete(league);
+        redirectAttrs.addFlashAttribute("successMessage", "League has been deleted");
+        return new ModelAndView("redirect:/leagues");
+    }
+
+    @RequestMapping(value="/leagues/{id}", method = RequestMethod.POST)
     public ModelAndView createNewLeague(@Valid League league, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
-        League leagueExists = leagueRepository.findLeagueByLabel(league.getLabel());
-        if (leagueExists != null) {
-            bindingResult
-                    .rejectValue("label", "error.league",
-                            "There is already a league registered with the name provided");
-        }
         if (bindingResult.hasErrors()) {
             List<LeagueType> leagueTypes = leagueTypeRepository.findAll();
             viewModel.addObject("leagueTypes", leagueTypes);
-            viewModel.setViewName("league-new");
+            viewModel.setViewName("leagues/league-edit");
         } else {
             leagueRepository.save(league);
-            redirectAttrs.addFlashAttribute("successMessage", "League has been registered successfully");
+            redirectAttrs.addFlashAttribute("successMessage", "League has been saved successfully");
             return new ModelAndView("redirect:/leagues");
         }
         return viewModel;

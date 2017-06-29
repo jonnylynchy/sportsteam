@@ -29,7 +29,7 @@
                     <td><b th:text="${league.label}"></b></td>
                     <td th:text="${league.description}"></td>
                     <td th:text="${league.leagueType.label}"></td>
-                    <td><a th:href="@{/league/} + ${league.leagueId}" th:text="Edit"></a> | <a th:href="@{/league/archive/} + ${league.leagueId}" th:text="Archive"></a></td>
+                    <td><a th:href="@{/leagues/} + ${league.leagueId}" th:text="Edit"></a> | <a th:href="@{/leagues/delete/} + ${league.leagueId}" th:text="Delete"></a></td>
                 </tr>
             </tbody>
         </table>
