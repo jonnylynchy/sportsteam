@@ -19,7 +19,7 @@ CREATE TABLE `user` (
   `active` int(11) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;

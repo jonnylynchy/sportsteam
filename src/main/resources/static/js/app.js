@@ -9,7 +9,7 @@
         $.getJSON( "/api/v1/teams", function( data ) {
             var items = [];
             $.each( data, function( key, team ) {
-                items.push( "<li id='" + team.id + "'><b>" + team.name + "</b><br>" + team.description + "</li>" );
+                items.push( "<li id='" + team.team_id + "'><b>" + team.name + "</b><br>" + team.description + "</li>" );
             });
 
             $( "<ul/>", {

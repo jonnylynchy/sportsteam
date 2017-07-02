@@ -17,15 +17,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form autocomplete="off" action="#" th:action="@{/registration}"
+            <form autocomplete="off" action="#" th:action="@{/registerUser}"
                   th:object="${user}" method="post" class="form-horizontal"
                   role="form">
                 <h2>Registration Form</h2>
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                        <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
                                class="validation-message"></label>
-                        <input type="text" th:field="*{name}" placeholder="Name"
+                        <input type="text" th:field="*{firstName}" placeholder="First Name"
                                class="form-control" />
                     </div>
                 </div>
@@ -61,8 +61,8 @@
                     </div>
                 </div>
 
+                <!-- Model requires all attributes to be in form. These are empty for now. -->
                 <span th:utext="${successMessage}"></span>
-
 
             </form>
         </div>

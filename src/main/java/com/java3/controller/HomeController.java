@@ -1,15 +1,12 @@
 package com.java3.controller;
 
+import com.java3.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java3.model.Team;
-import com.java3.model.User;
-import com.java3.service.UserService;
 
 import java.util.List;
 
@@ -18,14 +15,15 @@ import java.util.List;
  */
 @Controller
 public class HomeController {
+
     @Autowired
-    private UserService userService;
+    private TeamRepository teamRepository;
 
     @RequestMapping(value={"/", "/index"})
     public ModelAndView index() {
         ModelAndView viewModel = new ModelAndView();
         viewModel.setViewName("index");
-        List<Team> teamList = TeamsStub.list();
+        List<Team> teamList = teamRepository.findAll();
         viewModel.addObject("teams", teamList);
         return viewModel;
     }

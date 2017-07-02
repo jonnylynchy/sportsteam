@@ -8,13 +8,12 @@
         <div class="alert alert-success" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
         <p>
             <div class="btn-toolbar float-right">
-                <form th:action="@{/leagues/add}" method="get">
+                <form th:action="@{/admin/leagues/add}" method="get">
                     <button class="btn btn-primary" type="Submit">Add New</button>
                 </form>
             </div>
             <h2>Leagues</h2>
         </p>
-
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -29,7 +28,7 @@
                     <td><b th:text="${league.label}"></b></td>
                     <td th:text="${league.description}"></td>
                     <td th:text="${league.leagueType.label}"></td>
-                    <td><a th:href="@{/leagues/} + ${league.leagueId}" th:text="Edit"></a> | <a th:href="@{/leagues/delete/} + ${league.leagueId}" th:text="Delete"></a></td>
+                    <td><a th:href="@{/admin/leagues/edit/} + ${league.leagueId}" th:text="Edit"></a> | <a th:href="@{/admin/leagues/delete/} + ${league.leagueId}" th:text="Delete"></a></td>
                 </tr>
             </tbody>
         </table>

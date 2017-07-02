@@ -15,7 +15,7 @@
             <!-- This list of teams comes from viewmodel in controller/HomeController-->
             <div class="teams-vm">
                 <ul>
-                    <li th:each="team: ${teams}" th:attr="id=${team.id}">
+                    <li th:each="team: ${teams}" th:attr="id=${team.team_id}">
                         <b th:text="${team.name}"></b><br />
                         <span th:text="${team.description}"></span>
                     </li>

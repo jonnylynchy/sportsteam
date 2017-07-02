@@ -23,7 +23,7 @@ public class CommonController {
         User user = userService.findUserByEmail(auth.getName());
         viewModel.addAttribute("user", user);
         if(user != null) {
-            viewModel.addAttribute("authUserName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+            viewModel.addAttribute("authUserName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         } else {
             viewModel.addAttribute("authUserName", "");
         }

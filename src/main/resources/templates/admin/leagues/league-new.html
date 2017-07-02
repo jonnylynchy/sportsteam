@@ -7,13 +7,12 @@
     <div th:if="${user}">
 
         <p>
-        <h2>Edit League</h2>
+        <h2>Add New League</h2>
         </p>
         <hr>
-        <form autocomplete="off" action="#" th:action="@{/leagues/add}"
+        <form autocomplete="off" action="#" th:action="@{/admin/leagues/add}"
               th:object="${league}" method="post" class="form-horizontal"
               role="form">
-            <input type="hidden" th:field="*{leagueId}" />
             <div class="form-group">
                 <label for="inputLeagueLabel">League Name</label>
                 <input type="text" th:field="*{label}" placeholder="Name"
@@ -39,6 +38,7 @@
             </div>
             <hr>
             <div class="btn-toolbar float-right">
+                <button type="submit" name="action" class="btn btn-link" value="cancel">Cancel</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>

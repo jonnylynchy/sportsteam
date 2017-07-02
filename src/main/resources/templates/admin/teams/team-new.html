@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/head :: head"></head>
+<body>
+<th:block th:replace="fragments/header :: header"></th:block>
+<div class="container">
+    <div th:if="${user}">
+
+        <p>
+        <h2>Add Team</h2>
+        </p>
+        <hr>
+        <form autocomplete="off" action="#" th:action="@{/admin/teams/add}"
+              th:object="${team}" method="post" class="form-horizontal"
+              role="form">
+            <div class="form-group">
+                <label for="inputLeagueLabel">Team Name</label>
+                <input type="text" th:field="*{teamName}" placeholder="Name"
+                       class="form-control" id="inputLeagueLabel" />
+                <label th:if="${#fields.hasErrors('teamName')}" th:errors="*{teamName}"
+                       class="text-danger"></label>
+            </div>
+            <div class="form-group">
+                <label for="inputLeagueDescription">Team Description</label>
+                <input type="text" th:field="*{description}" placeholder="Description"
+                       class="form-control" id="inputLeagueDescription" />
+                <label th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                       class="text-danger"></label>
+            </div>
+            <div class="form-group">
+                <label for="inputTypeId">Year Formed</label>
+                <select class="form-control" th:field="${yearFormed}"  id="inputTypeId">
+                    <option value="">Select Year Formed</option>
+                    <option th:each="yearFormed : ${years}" th:value="${yearFormed}" th:text="${yearFormed}"></option>
+                </select>
+                <label th:if="${#fields.hasErrors('yearFormed')}" th:errors="*{yearFormed}"
+                       class="text-danger"></label>
+            </div>
+            <hr>
+            <div class="btn-toolbar float-right">
+                <button type="submit" name="action" class="btn btn-link" value="cancel">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>

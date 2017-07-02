@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/head :: head"></head>
+<body>
+<th:block th:replace="fragments/header :: header"></th:block>
+<div class="container">
+    <div th:if="${user}">
+        <div class="alert alert-success" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
+        <p>
+        <div class="btn-toolbar float-right">
+            <form th:action="@{/admin/teams/add}" method="get">
+                <button class="btn btn-primary" type="Submit">Add New</button>
+            </form>
+        </div>
+        <h2>Teams</h2>
+        </p>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Year Formed</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="team: ${teams}" th:attr="id=${team.teamId}">
+                <td><b th:text="${team.teamName}"></b></td>
+                <td th:text="${team.description}"></td>
+                <td th:text="${team.yearFormed}"></td>
+                <td><a th:href="@{/admin/teams/} + ${team.teamId}" th:text="Edit"></a> | <a th:href="@{/admin/teams/delete/} + ${team.teamId}" th:text="Delete"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>
