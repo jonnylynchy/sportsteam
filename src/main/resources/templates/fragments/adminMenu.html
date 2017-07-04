@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+    <body>
+    <th:block th:fragment="adminMenu">
+        <div class="btn-group-vertical btn-block">
+            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('users')} ? active : inactive">Users</a>
+            <a class="btn btn-secondary" th:href="@{/admin/leagues/}" th:classappend="${#httpServletRequest.getServletPath().contains('leagues')} ? active : inactive">Leagues</a>
+            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('games')} ? active : inactive">Games</a>
+            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('teams')} ? active : inactive">Teams</a>
+            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('players')} ? active : inactive">Players</a>
+            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('profile')} ? active : inactive">My Profile</a>
+        </div>
+    </th:block>
+    </body>
+
+<!--
+
+<div th:switch="${user.role}">
+  <p th:case="'admin'">User is an administrator</p>
+  <p th:case="#{roles.manager}">User is a manager</p>
+  <p th:case="*">User is some other thing</p>
+</div>
+
+-->
+
+</html>

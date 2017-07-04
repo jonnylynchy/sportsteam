@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/head :: head"></head>
+<body>
+<th:block th:replace="fragments/header :: header">Header here</th:block>
+<div class="container">
+    <h2>Admin</h2>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <th:block th:replace="fragments/adminMenu :: adminMenu">admin menu here</th:block>
+        </div>
+        <div class="col-9">
+            <h4>Add User</h4>
+            <p></p>
+            <hr>
+            <form autocomplete="off" action="#" th:action="@{/admin/users/add} + '?save=1'"
+                  th:object="${userObj}" method="post" class="form-horizontal"
+                  role="form">
+                <div class="form-group">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="text" th:field="*{firstName}" placeholder="Name"
+                           class="form-control" id="inputFirstName" />
+                    <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                           class="text-danger"></label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" th:field="*{lastName}" placeholder="Name"
+                           class="form-control" id="inputLastName" />
+                    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                           class="text-danger"></label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail">Email Address</label>
+                    <input type="text" th:field="*{email}" placeholder="Email Address"
+                           class="form-control" id="inputEmail" />
+                    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                           class="text-danger"></label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword">Default Password</label>
+                    <input type="text" th:field="*{password}" placeholder="Default Password"
+                           class="form-control" id="inputPassword" />
+                    <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                           class="text-danger"></label>
+                </div>
+
+                <div class="form-group">
+                    <label>Roles</label>
+                    <p></p>
+                    <th:block th:each="role : ${rolesList}">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" th:field="*{roles}" th:value="${role.id}" />
+                                <span th:text="${role.role}"></span>
+                            </label>
+                        </div>
+                    </th:block>
+                </div>
+
+                <hr>
+                <div class="btn-toolbar float-right">
+                    <button type="submit" name="action" class="btn btn-link" value="cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>

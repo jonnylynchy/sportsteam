@@ -8,32 +8,34 @@
     <hr>
     <div class="row">
         <div class="col">
-            <th:block th:replace="fragments/adminMenu :: adminMenu">admin menu here</th:block>
+            <th:block th:replace="fragments/adminMenu :: adminMenu"></th:block>
         </div>
         <div class="col-9">
             <div class="alert alert-success" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
             <div class="btn-toolbar float-right">
-                <form th:action="@{/admin/leagues/add}" method="get">
+                <form th:action="@{/admin/users/add}" method="get">
                     <button class="btn btn-primary" type="Submit">Add New</button>
                 </form>
             </div>
-            <h4>Leagues</h4>
+            <h4>Users</h4>
             <p></p>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Description</th>
-                        <th th:width="150">League Type</th>
-                        <th th:width="125">Action</th>
+                        <th>Email</th>
+                        <th>Roles</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="league: ${leagues}" th:attr="id=${league.leagueId}">
-                        <td><b th:text="${league.label}"></b></td>
-                        <td th:text="${league.description}"></td>
-                        <td th:text="${league.leagueType.label}"></td>
-                        <td><a th:href="@{/admin/leagues/edit/} + ${league.leagueId}" th:text="Edit"></a> | <a th:href="@{/admin/leagues/delete/} + ${league.leagueId}" th:text="Delete"></a></td>
+                    <tr th:each="user: ${users}" th:attr="id=${user.id}">
+                        <td><b th:text="${user.firstName} + ' ' + ${user.lastName}"></b></td>
+                        <td th:text="${user.email}"></td>
+                        <td>
+                           <span th:each="role: ${user.roles}" th:text="${role.role} + ' '"></span>
+                        </td>
+                        <td><a th:href="@{/admin/users/edit/} + ${user.id}" th:text="Edit"></a> | <a th:href="@{/admin/users/deactivate/} + ${user.id}" th:text="Deactivate"></a></td>
                     </tr>
                 </tbody>
             </table>
