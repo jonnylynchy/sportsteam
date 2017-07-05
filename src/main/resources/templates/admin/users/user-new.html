@@ -49,9 +49,8 @@
                            class="text-danger"></label>
                 </div>
 
-                <div class="form-group">
-                    <label>Roles</label>
-                    <p></p>
+                <div class="form-group roles">
+                    <label>Roles</label><br />
                     <th:block th:each="role : ${rolesList}">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
@@ -60,6 +59,14 @@
                             </label>
                         </div>
                     </th:block>
+                </div>
+
+                <div class="form-group leagues hide">
+                    <label>Leagues</label><br />
+                </div>
+
+                <div class="form-group teams hide">
+                    <label>Teams</label><br />
                 </div>
 
                 <hr>
@@ -72,5 +79,6 @@
     </div>
 </div>
 <th:block th:replace="fragments/footer :: footer"></th:block>
+<script th:src="@{/js/admin/users.js}"></script>
 </body>
 </html>
