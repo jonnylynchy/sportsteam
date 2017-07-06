@@ -9,23 +9,22 @@
             <p class="lead">Amazing Lacrosse Team Website with stellar features.</p>
         </div>
 
-        <div th:if="${user}">
+        <div>
             <h2>Teams</h2>
-            <i>(from viewmodel)</i>
             <!-- This list of teams comes from viewmodel in controller/HomeController-->
             <div class="teams-vm">
                 <ul>
-                    <li th:each="team: ${teams}" th:attr="id=${team.team_id}">
+                    <li th:each="team: ${teams}" th:attr="id=${team.id}">
                         <b th:text="${team.name}"></b><br />
                         <span th:text="${team.description}"></span>
                     </li>
                 </ul>
             </div>
 
-            <!-- This list of teams comes from javascript calling the rest api and rendering in html-->
-            <h2>Teams</h2>
-            <i>(from rest api via javascript)</i>
-            <div class="teams"></div>
+            <!--&lt;!&ndash; This list of teams comes from javascript calling the rest api and rendering in html&ndash;&gt;-->
+            <!--<h2>Teams</h2>-->
+            <!--<i>(from rest api via javascript)</i>-->
+            <!--<div class="teams"></div>-->
         </div>
     </div>
     <th:block th:replace="fragments/footer :: footer"></th:block>

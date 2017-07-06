@@ -1,8 +1,11 @@
 package com.java3.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by jon.lynch on 6/21/17.
@@ -25,20 +28,22 @@ public class Team {
     private String description;
 
     @Column(name = "year_formed")
-    @NotEmpty(message = "*Please provide a year formed")
-    private int yearFormed;
+    @NotNull(message = "*Please provide a year formed")
+    private Integer yearFormed;
 
     @ManyToOne
     @JoinColumn(name = "league_id")
+    @NotNull(message = "*Please provide a league")
     private League league;
 
     public Team() { }
 
-    public Team(int teamId, String name, String description, Integer yearFormed) {
+    public Team(int teamId, String name, String description, Integer yearFormed, League league) {
         this.teamId = teamId;
         this.name = name;
         this.description = description;
         this.yearFormed = yearFormed;
+        this.league = league;
     }
 
     public int getId() {
@@ -73,6 +78,8 @@ public class Team {
         this.yearFormed = yearFormed;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "league_id")
     public League getLeague() {
         return league;
     }

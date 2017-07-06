@@ -17,7 +17,7 @@ public class League {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "league_id")
+    @JoinColumn(name = "league_id")
     private int leagueId;
 
     @NotEmpty(message = "*Please provide a label")

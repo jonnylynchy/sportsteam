@@ -52,6 +52,7 @@
             leaguesContainer.removeClass('hide');
             teamsContainer.addClass('hide');
         } else if((roleType === 'CAPTAIN' || roleType === 'PLAYER')) {
+            leaguesContainer.removeClass('hide');
             teamsContainer.removeClass('hide');
         } else {
             leaguesContainer.addClass('hide');
