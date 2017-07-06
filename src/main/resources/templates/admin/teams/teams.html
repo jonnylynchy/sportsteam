@@ -33,7 +33,7 @@
                     <td><b th:text="${team.name}"></b></td>
                     <td th:text="${team.description}"></td>
                     <td th:text="${team.yearFormed}"></td>
-                    <td><a th:href="@{/admin/teams/} + ${team.id}" th:text="Edit"></a> | <a th:href="@{/admin/teams/archive/} + ${team.id}" th:text="Archive"></a></td>
+                    <td><a th:href="@{/admin/teams/edit/} + ${team.id}" th:text="Edit"></a> | <a th:href="@{/admin/teams/archive/} + ${team.id}" th:text="Archive"></a></td>
                 </tr>
                 </tbody>
             </table>
