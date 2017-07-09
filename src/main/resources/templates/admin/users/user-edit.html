@@ -14,7 +14,7 @@
             <h4>Edit User</h4>
             <p></p>
             <hr>
-            <form autocomplete="off" action="#" th:action="@{/admin/users/add} + '?save=1'"
+            <form autocomplete="off" action="#" th:action="@{/admin/users/edit}"
                   th:object="${userObj}" method="post" class="form-horizontal"
                   role="form">
                 <input type="hidden" th:field="*{id}" />

@@ -16,7 +16,7 @@
             <p></p>
             <hr>
             <form autocomplete="off" action="#" th:action="@{/admin/profile/}"
-                  th:object="${user}" method="post" class="form-horizontal"
+                  th:object="${userObj}" method="post" class="form-horizontal"
                   role="form">
                 <input type="hidden" th:field="*{id}" />
                 <div class="form-group">
@@ -45,22 +45,14 @@
 
                 <div class="form-group">
                     <label for="inputPassword">Password</label>
-                    <input type="password" th:field="*{password}" placeholder="Password"
-                           class="form-control" id="inputPassword" />
+                    <input type="text" type="password" name="password" placeholder="Password"
+                           class="form-control" id="inputPassword" th:value="${userPass}" />
+                    <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                           class="text-danger"></label>
                     <p id="passwordHelpBlock" class="form-text text-muted">
                         Only edit if you wish to change your password.
                     </p>
-                    <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                           class="text-danger"></label>
                 </div>
-
-                <!--<div class="form-group">-->
-                    <!--<label for="inputPasswordConfirm">Confirm Password</label>-->
-                    <!--<input type="password" th:field="*{passwordConfirm}" placeholder="Password"-->
-                           <!--class="form-control" id="inputPasswordConfirm" />-->
-                    <!--<label th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"-->
-                           <!--class="text-danger"></label>-->
-                <!--</div>-->
 
                 <hr>
                 <div class="btn-toolbar float-right">
@@ -72,6 +64,6 @@
     </div>
 </div>
 <th:block th:replace="fragments/footer :: footer"></th:block>
-<script th:src="@{/js/admin/users.js}"></script>
+<script th:src="@{/js/admin/profile.js}"></script>
 </body>
 </html>

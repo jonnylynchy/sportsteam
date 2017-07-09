@@ -34,26 +34,27 @@ public class LoginController {
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", new User());
+        modelAndView.addObject("userObj", new User());
         modelAndView.setViewName("registration");
         return modelAndView;
     }
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public ModelAndView registerUser(@Valid @ModelAttribute("User")User user, BindingResult bindingResult) {
+    public ModelAndView registerUser(@Valid @ModelAttribute("userObj")User userObj, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByEmail(user.getEmail());
+        User userExists = userService.findUserByEmail(userObj.getEmail());
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.user",
                             "There is already a user registered with the email provided");
         }
         if (bindingResult.hasErrors()) {
+            modelAndView.addObject("userObj", userObj);
             modelAndView.setViewName("registration");
         } else {
-            userService.saveUser(user);
+            userService.saveUser(userObj);
             modelAndView.addObject("successMessage", "User has been registered successfully");
-            modelAndView.addObject("user", new User());
+            modelAndView.addObject("userObj", new User());
             modelAndView.setViewName("registration");
         }
         return modelAndView;

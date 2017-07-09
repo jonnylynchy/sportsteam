@@ -9,6 +9,7 @@ import com.java3.repository.RoleRepository;
 import com.java3.repository.TeamRepository;
 import com.java3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,6 +41,9 @@ public class UserController {
 
     @Autowired
     private TeamRepository teamRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @RequestMapping(value={"/users"}, method = RequestMethod.GET)
     public ModelAndView users() {
@@ -80,6 +84,8 @@ public class UserController {
 
             viewModel.setViewName("admin/users/user-new");
         } else {
+            userObj.setActive(1);
+            userObj.setPassword(bCryptPasswordEncoder.encode(userObj.getPassword()));
             userRepository.save(userObj);
             redirectAttrs.addFlashAttribute("successMessage", "User has been saved successfully");
             return new ModelAndView("redirect:/admin/users");
@@ -98,6 +104,7 @@ public class UserController {
 
             viewModel.setViewName("admin/users/user-edit");
         } else {
+            userObj.setActive(1);
             userRepository.save(userObj);
             redirectAttrs.addFlashAttribute("successMessage", "User has been saved successfully");
             return new ModelAndView("redirect:/admin/users");

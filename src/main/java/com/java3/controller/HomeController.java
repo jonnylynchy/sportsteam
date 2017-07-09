@@ -27,4 +27,11 @@ public class HomeController {
         viewModel.addObject("teams", teamList);
         return viewModel;
     }
+
+    @RequestMapping(value="/access-denied")
+    public ModelAndView accessDenied() {
+        ModelAndView viewModel = new ModelAndView();
+        viewModel.setViewName("access-denied");
+        return viewModel;
+    }
 }

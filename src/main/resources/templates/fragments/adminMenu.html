@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head></head>
     <body>
-    <th:block th:fragment="adminMenu">
+    <th:block th:fragment="adminMenu" sec:authorize="isAuthenticated()">
         <div class="btn-group-vertical btn-block">
-            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('users')} ? active : inactive">Users</a>
-            <a class="btn btn-secondary" th:href="@{/admin/leagues/}" th:classappend="${#httpServletRequest.getServletPath().contains('leagues')} ? active : inactive">Leagues</a>
-            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('games')} ? active : inactive">Games</a>
-            <a class="btn btn-secondary" th:href="@{/admin/teams/}" th:classappend="${#httpServletRequest.getServletPath().contains('teams')} ? active : inactive">Teams</a>
-            <a class="btn btn-secondary" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('players')} ? active : inactive">Players</a>
-            <a class="btn btn-secondary" th:href="@{/admin/profile/}" th:classappend="${#httpServletRequest.getServletPath().contains('profile')} ? active : inactive">My Profile</a>
+            <a class="btn btn-secondary" sec:authorize-url="/admin/users/" th:href="@{/admin/users/}" th:classappend="${#httpServletRequest.getServletPath().contains('users')} ? active : inactive">Users</a>
+            <a class="btn btn-secondary" sec:authorize-url="/admin/leagues/" th:href="@{/admin/leagues/}" th:classappend="${#httpServletRequest.getServletPath().contains('leagues')} ? active : inactive">Leagues</a>
+            <a class="btn btn-secondary" sec:authorize-url="/admin/games/" th:href="@{/admin/games/}" th:classappend="${#httpServletRequest.getServletPath().contains('games')} ? active : inactive">Games</a>
+            <a class="btn btn-secondary" sec:authorize-url="/admin/teams/" th:href="@{/admin/teams/}" th:classappend="${#httpServletRequest.getServletPath().contains('teams')} ? active : inactive">Teams</a>
+            <a class="btn btn-secondary" sec:authorize-url="/admin/roster/" th:href="@{/admin/roster/}" th:classappend="${#httpServletRequest.getServletPath().contains('roster')} ? active : inactive">Roster</a>
+            <a class="btn btn-secondary" sec:authorize-url="/admin/profile/" th:href="@{/admin/profile/}" th:classappend="${#httpServletRequest.getServletPath().contains('profile')} ? active : inactive">My Profile</a>
         </div>
     </th:block>
     </body>
-
-<!--
-
-<div th:switch="${user.role}">
-  <p th:case="'admin'">User is an administrator</p>
-  <p th:case="#{roles.manager}">User is a manager</p>
-  <p th:case="*">User is some other thing</p>
-</div>
-
--->
 
 </html>
