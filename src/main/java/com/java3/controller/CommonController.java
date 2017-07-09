@@ -1,5 +1,6 @@
 package com.java3.controller;
 
+import com.java3.model.Role;
 import com.java3.model.User;
 import com.java3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,27 @@ public class CommonController {
         User user = userService.findUserByEmail(auth.getName());
         viewModel.addAttribute("user", user);
         if(user != null) {
-            viewModel.addAttribute("authUserName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+            viewModel.addAttribute("authUserName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + getUserRoleName(user) + ")");
         } else {
             viewModel.addAttribute("authUserName", "");
         }
+    }
 
+    private String getUserRoleName(User user) {
+        Role userRole = (Role)user.getRoles().toArray()[0];
+        String roleToName = "";
+
+        if(userRole.getRole().equals("ADMIN")) {
+            roleToName = "Admin";
+        } else if(userRole.getRole().equals("LEAGUE_MANAGER")) {
+            roleToName = "League Manager";
+        } else if(userRole.getRole().equals("CAPTAIN")) {
+            roleToName = "Captain";
+        } else if(userRole.getRole().equals("PLAYER")) {
+            roleToName = "Player";
+        }
+
+        return roleToName;
     }
 
 }
