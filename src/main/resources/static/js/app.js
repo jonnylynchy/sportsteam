@@ -19,6 +19,8 @@
     //     });
     //
     // });
+
+    $('.carousel-item').first().addClass("active");
 })();
 
 // function goToUrl(path) {

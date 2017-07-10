@@ -5,20 +5,39 @@
     <th:block th:replace="fragments/header :: header"></th:block>
     <div class="container">
         <div class="starter-template">
-            <h1>Sports Team Website</h1>
-            <p class="lead">Amazing Lacrosse Team Website with stellar features.</p>
+            <h1>SportsWeb</h1>
+            <p class="lead">Data Driven Websites for Leagues and Sports Teams</p>
         </div>
 
         <div>
             <h2>Teams</h2>
             <!-- This list of teams comes from viewmodel in controller/HomeController-->
-            <div class="teams-vm">
-                <ul>
-                    <li th:each="team: ${teams}" th:attr="id=${team.id}">
-                        <b th:text="${team.name}"></b><br />
-                        <span th:text="${team.description}"></span>
-                    </li>
-                </ul>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item" th:each="team: ${teams}" th:attr="id=${team.id}">
+                        <div class="card">
+                            <img class="card-img-top" th:src="|@{/images/team}${team.id}.jpg|">
+                            <div class="card-block">
+                                <h4 class="card-title" th:text="${team.name}"></h4>
+                                <p class="card-text" th:text="${team.description}"></p>
+                                <a href="#" class="btn btn-primary">View Team</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
 
             <!--&lt;!&ndash; This list of teams comes from javascript calling the rest api and rendering in html&ndash;&gt;-->

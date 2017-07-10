@@ -28,6 +28,27 @@ public class HomeController {
         return viewModel;
     }
 
+    @RequestMapping(value="/leagues")
+    public ModelAndView leagues() {
+        ModelAndView viewModel = new ModelAndView();
+        viewModel.setViewName("leagues");
+        return viewModel;
+    }
+
+    @RequestMapping(value="/schedules")
+    public ModelAndView schedules() {
+        ModelAndView viewModel = new ModelAndView();
+        viewModel.setViewName("schedules");
+        return viewModel;
+    }
+
+    @RequestMapping(value="/about")
+    public ModelAndView about() {
+        ModelAndView viewModel = new ModelAndView();
+        viewModel.setViewName("about");
+        return viewModel;
+    }
+
     @RequestMapping(value="/access-denied")
     public ModelAndView accessDenied() {
         ModelAndView viewModel = new ModelAndView();
