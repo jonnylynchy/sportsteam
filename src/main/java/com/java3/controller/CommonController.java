@@ -32,19 +32,7 @@ public class CommonController {
 
     private String getUserRoleName(User user) {
         Role userRole = (Role)user.getRoles().toArray()[0];
-        String roleToName = "";
-
-        if(userRole.getRole().equals("ADMIN")) {
-            roleToName = "Admin";
-        } else if(userRole.getRole().equals("LEAGUE_MANAGER")) {
-            roleToName = "League Manager";
-        } else if(userRole.getRole().equals("CAPTAIN")) {
-            roleToName = "Captain";
-        } else if(userRole.getRole().equals("PLAYER")) {
-            roleToName = "Player";
-        }
-
-        return roleToName;
+        return userRole.getRole().toLowerCase().replace("_", " ");
     }
 
 }

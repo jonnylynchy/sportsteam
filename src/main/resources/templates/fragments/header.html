@@ -12,15 +12,18 @@
             <a class="navbar-brand" href="#">SportsWeb</a>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <!--<li class="nav-item active">-->
-                        <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-                    <!--</li>-->
-                    <!--<li class="nav-item">-->
-                        <!--<a class="nav-link" href="#">Link</a>-->
-                    <!--</li>-->
-                    <!--<li class="nav-item">-->
-                        <!--<a class="nav-link disabled" href="#">Disabled</a>-->
-                    <!--</li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}" th:classappend="${#httpServletRequest.getServletPath().equals('/')} ? active : inactive">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/leagues}" th:classappend="${#httpServletRequest.getServletPath().contains('/leagues')} ? active : inactive">Leagues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/schedules}" th:classappend="${#httpServletRequest.getServletPath().contains('/schedules')} ? active : inactive">Schedules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/about}" th:classappend="${#httpServletRequest.getServletPath().contains('/about')} ? active : inactive">About</a>
+                    </li>
                     <!--<li class="nav-item dropdown">-->
                         <!--<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"-->
                            <!--aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
@@ -33,8 +36,13 @@
                 </ul>
                 <!-- If user is logged in, show logout button -->
                 <ul class="navbar-nav navbar-right">
-                    <li><span class="navbar-text" th:utext="${authUserName}"></span>&nbsp;</li>
-                    <li th:if="${user}">
+                    <li class="nav-item" sec:authorize-url="/admin/index">
+                        <a class="nav-link"  th:href="@{/admin/index/}" th:classappend="${#httpServletRequest.getServletPath().contains('/admin/index/')} ? active : inactive">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  th:href="@{/admin/profile/}" th:classappend="${#httpServletRequest.getServletPath().contains('/profile')} ? active : inactive" th:text="${authUserName}"></a>
+                    </li>
+                    <li class="nav-item" th:if="${user}">
                         <form class="navbar-form" th:action="@{/logout}" method="get">
                             <button class="btn btn-md btn-danger btn-block" name="registration"
                                     type="Submit">Logout</button>
