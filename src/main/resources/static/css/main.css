@@ -10,6 +10,19 @@ button {
     cursor: pointer;
 }
 
+/* Boostrap Overrides */
+img.card-img-top {
+    max-width: 1200px;
+}
+
+.carousel-control {
+    margin-bottom: 140px;
+}
+
+.carousel-indicators {
+    bottom: 170px;
+}
+
 /* Utilities */
 .hide {
     display: none;
