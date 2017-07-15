@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/head :: head"></head>
+<body>
+<th:block th:replace="fragments/header :: header"></th:block>
+<div class="container">
+    <h2>Admin</h2>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <th:block th:replace="fragments/adminMenu :: adminMenu">admin menu here</th:block>
+        </div>
+        <div class="col-9">
+            <p>
+            <h4>Add New Game</h4>
+            </p>
+            <hr>
+            <form autocomplete="off" action="#" th:action="@{/admin/games/add}"
+                  th:object="${game}" method="post" class="form-horizontal"
+                  role="form">
+                <div class="form-group">
+                    <label for="inputLocationId">Location</label>
+                    <select class="form-control" th:field="${game.gameLocation}"  id="inputLocationId">
+                        <option value="">Select Game Location</option>
+                        <option th:each="location : ${gameLocations}" th:value="${location.gameLocationId}" th:text="${location.locationLabel}"></option>
+                    </select>
+                    <label th:if="${#fields.hasErrors('gameLocation')}" th:errors="*{gameLocation}"
+                           class="text-danger"></label>
+                </div>
+                <div class="form-group">
+                    <label for="inputGameDateTime">Game Date/Time</label>
+                    <input type="text" th:field="*{dateTime}" placeholder="Date/Time"
+                           class="form-control" id="inputGameDateTime" />
+                    <label th:if="${#fields.hasErrors('dateTime')}" th:errors="*{dateTime}"
+                           class="text-danger"></label>
+                </div>
+                <div class="form-group leagues">
+                    <label for="inputLeague">League</label>
+                    <select class="form-control" id="inputLeague">
+                        <option value="">Select League</option>
+                        <option th:each="leagueObj : ${leagueList}" th:value="${leagueObj.leagueId}" th:text="${leagueObj.label}"></option>
+                    </select>
+                </div>
+                <div class="form-group teams1 hide">
+                    <label for="inputTeam1">Home Team</label>
+                    <select class="form-control" id="inputTeam1">
+                        <option value="">Select Team</option>
+                    </select>
+                </div>
+                <div class="form-group teams2 hide">
+                    <label for="inputTeam2">Away Team</label>
+                    <select class="form-control" id="inputTeam2">
+                        <option value="">Select Team</option>
+                    </select>
+                </div>
+                <hr>
+                <div class="btn-toolbar float-right">
+                    <button type="submit" name="action" class="btn btn-link" value="cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<th:block th:replace="fragments/footer :: footer"></th:block>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/admin/games.js}"></script>
+</body>
+</html>

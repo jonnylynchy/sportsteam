@@ -1,7 +1,6 @@
 package com.java3.model;
 
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;

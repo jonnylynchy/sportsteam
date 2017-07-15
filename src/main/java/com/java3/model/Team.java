@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Range;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 /**
  * Created by jon.lynch on 6/21/17.
@@ -35,6 +36,10 @@ public class Team {
     @JoinColumn(name = "league_id")
     @NotNull(message = "*Please provide a league")
     private League league;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "team_game", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "game_id"))
+    private Set<Game> games;
 
     public Team() { }
 

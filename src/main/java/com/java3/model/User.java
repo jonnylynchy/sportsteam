@@ -64,6 +64,10 @@ public class User {
     @JoinTable(name = "user_team", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "team_id"))
     private Set<Team> teams;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_game", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "game_id"))
+    private Set<Game> games;
+
     public int getId() {
         return id;
     }
