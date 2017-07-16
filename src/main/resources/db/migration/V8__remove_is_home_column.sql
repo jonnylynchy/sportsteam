@@ -1,0 +1,1 @@
+ALTER TABLE team_game DROP is_home;

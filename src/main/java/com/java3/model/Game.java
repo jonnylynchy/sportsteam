@@ -27,8 +27,10 @@ public class Game {
     @Column(name = "created_at")
     private Date createdAt;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "team_game", joinColumns = @JoinColumn(name = "game_id"), inverseJoinColumns = @JoinColumn(name = "team_id"))
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "team_game",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "team_id"))
     private Set<Team> teams;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -64,6 +66,10 @@ public class Game {
 
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
     }
 
     public void setUsers(Set<User> users) {

@@ -19,7 +19,7 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item" th:each="team: ${teams}" th:attr="id=${team.id}">
+                    <div class="carousel-item" th:each="team: ${teams}" th:attr="id=${team.teamId}">
                         <div class="card">
                             <img class="card-img-top" th:src="|@{/images/}${team.getLeague().getLeagueType().getLabel().toLowerCase()}.jpg|">
                             <div class="card-block">

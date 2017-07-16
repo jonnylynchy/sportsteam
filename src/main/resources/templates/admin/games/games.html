@@ -31,12 +31,12 @@
                 </thead>
                 <tbody>
                 <tr th:each="game: ${games}" th:attr="id=${game.gameId}">
-                    <td><b th:text="${game.dateTime}"></b></td>
+                    <td><b th:text="${#calendars.format(game.dateTime,'MMMM dd yyyy hh:mm a')}"></b></td>
                     <td>
-                        <span th:each="team: ${game.teams}" th:text="${team.name}"></span>
+                        <span th:each="team: ${game.teams}" th:text="${game.teams[1].teamId} == ${team.teamId}? ${team.name} : ${team.name} + ' vs '"></span>
                     </td>
-                    <td th:text="${game.location.locationLabel}"></td>
-                    <td>...</td>
+                    <td th:text="${game.gameLocation.locationLabel}"></td>
+                    <td><a th:href="@{/admin/games/edit/} + ${game.gameId}" th:text="Edit"></a></td>
                 </tr>
                 </tbody>
             </table>

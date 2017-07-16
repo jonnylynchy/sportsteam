@@ -18,7 +18,7 @@
             <form autocomplete="off" action="#" th:action="@{/admin/games/add}"
                   th:object="${game}" method="post" class="form-horizontal"
                   role="form">
-                <div class="form-group">
+                <div class="form-group location">
                     <label for="inputLocationId">Location</label>
                     <select class="form-control" th:field="${game.gameLocation}"  id="inputLocationId">
                         <option value="">Select Game Location</option>
@@ -27,7 +27,7 @@
                     <label th:if="${#fields.hasErrors('gameLocation')}" th:errors="*{gameLocation}"
                            class="text-danger"></label>
                 </div>
-                <div class="form-group">
+                <div class="form-group datetime">
                     <label for="inputGameDateTime">Game Date/Time</label>
                     <input type="text" th:field="*{dateTime}" placeholder="Date/Time"
                            class="form-control" id="inputGameDateTime" />
@@ -53,10 +53,11 @@
                         <option value="">Select Team</option>
                     </select>
                 </div>
+                <input type="hidden" th:field="*{teams}" />
                 <hr>
                 <div class="btn-toolbar float-right">
                     <button type="submit" name="action" class="btn btn-link" value="cancel">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" disabled="disabled" class="btn btn-primary disabled">Submit</button>
                 </div>
             </form>
         </div>

@@ -37,8 +37,10 @@ public class Team {
     @NotNull(message = "*Please provide a league")
     private League league;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "team_game", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "game_id"))
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "team_game",
+            joinColumns = @JoinColumn(name = "team_id"),
+            inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Set<Game> games;
 
     public Team() { }
@@ -51,11 +53,11 @@ public class Team {
         this.league = league;
     }
 
-    public int getId() {
+    public int getTeamId() {
         return teamId;
     }
 
-    public void setId(int teamId) {
+    public void setTeamId(int teamId) {
         this.teamId = teamId;
     }
 

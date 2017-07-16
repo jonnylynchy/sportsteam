@@ -1,0 +1,2 @@
+ALTER TABLE `team_game`
+  CHANGE COLUMN `score` `score` INT(3) NOT NULL DEFAULT 0 COMMENT '' ;

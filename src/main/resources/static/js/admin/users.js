@@ -60,22 +60,6 @@
         }
     });
 
-    // function fetchLeagues() {
-    //     $.getJSON( "/api/v1/leagues", function( data ) {
-    //         var items = [];
-    //         $.each( data, function( key, league ) {
-    //             items.push('<div class="form-check"><label class="form-check-label"><input class="form-check-input" type="radio" name="league" id="' + league.leagueId + '" value="' + league.leagueId + '">');
-    //             items.push(' ' + league.label);
-    //             items.push('</label></div>');
-    //         });
-    //
-    //         $( "<div/>", {
-    //             "class": "leagueList",
-    //             html: items.join( "" )
-    //         }).appendTo( ".leagues" );
-    //     });
-    // }
-
     function fetchTeams(leagueId, originalTeamId) {
         $.getJSON( "/api/v1/teams/league/" + leagueId, function( data ) {
             var items = [],
@@ -83,10 +67,10 @@
 
             if(data.length > 0) {
                 $.each( data, function( key, team ) {
-                    if(team.id == originalTeamId) {
+                    if(team.teamId == originalTeamId) {
                         checkedAttribute = 'checked=checked';
                     }
-                    items.push('<div class="form-check"><label class="form-check-label"><input class="form-check-input" type="radio" name="teams" id="teams' + team.id + '" value="' + team.id + '" ' + checkedAttribute +  '">');
+                    items.push('<div class="form-check"><label class="form-check-label"><input class="form-check-input" type="radio" name="teams" id="teams' + team.teamId + '" value="' + team.teamId + '" ' + checkedAttribute +  '">');
                     items.push('<span>' + team.name + '</span>');
                     items.push('</label></div>');
                 });

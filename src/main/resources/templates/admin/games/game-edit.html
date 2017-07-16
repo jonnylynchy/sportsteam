@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/head :: head"></head>
+<body>
+<th:block th:replace="fragments/header :: header"></th:block>
+<div class="container">
+    <h2>Admin</h2>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <th:block th:replace="fragments/adminMenu :: adminMenu">admin menu here</th:block>
+        </div>
+        <div class="col-9">
+            <p>
+                <h4>Edit Game</h4>
+            </p>
+            <hr>
+
+            <p>
+                <strong>Location</strong><br />
+                <span th:text="${game.gameLocation.locationLabel}"></span>
+            </p>
+
+            <p>
+                <strong>Date/Time</strong><br />
+                <span th:text="${#calendars.format(game.dateTime,'MMMM dd yyyy hh:mm a')}"></span>
+            </p>
+
+            <form autocomplete="off" action="#" th:action="|@{/admin/games/edit}/${game.gameId}|" method="post" class="form-horizontal"
+                  role="form">
+
+                <div class="form-group team-game" th:each="teamGame : ${teamGames}">
+                    <label th:for="|${teamGame.team.name}_input|" th:text="${teamGame.team.name}"></label>
+                    <input type="text" class="form-control" th:value="${teamGame.score}" th:name="|teamgame_score:${teamGame.teamGameId}|" th:id="|${teamGame.team.name}_input|" placeholder="Score">
+                </div>
+
+                <hr>
+                <div class="btn-toolbar float-right">
+                    <button type="submit" name="action" class="btn btn-link" value="cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary disabled" disabled="disabled">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<th:block th:replace="fragments/footer :: footer"></th:block>
+<script th:src="@{/js/admin/game-edit.js}"></script>
+</body>
+</html>
