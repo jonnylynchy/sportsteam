@@ -1,5 +1,7 @@
 package com.java3.controller;
 
+import com.java3.model.League;
+import com.java3.repository.LeagueRepository;
 import com.java3.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class HomeController {
     @Autowired
     private TeamRepository teamRepository;
 
+    @Autowired
+    private LeagueRepository leagueRepository;
+
     @RequestMapping(value={"/", "/index"})
     public ModelAndView index() {
         ModelAndView viewModel = new ModelAndView();
@@ -31,6 +36,8 @@ public class HomeController {
     @RequestMapping(value="/leagues")
     public ModelAndView leagues() {
         ModelAndView viewModel = new ModelAndView();
+        List<League> leagueList = leagueRepository.findAll();
+        viewModel.addObject("leagueList", leagueList);
         viewModel.setViewName("leagues");
         return viewModel;
     }

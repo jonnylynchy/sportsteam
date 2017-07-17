@@ -6,7 +6,12 @@
 <div class="container">
     <div>
         <h2>Leagues</h2>
-        <p>Coming...</p>
+        <p>
+            <div th:each="league: ${leagueList}">
+                <h4 th:text="${league.label}"></h4>
+                <p th:text="${league.description}"></p>
+            </div>
+        </p>
     </div>
 </div>
 <th:block th:replace="fragments/footer :: footer"></th:block>

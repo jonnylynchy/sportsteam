@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.
                 authorizeRequests()
-                .antMatchers("/", "/leagues", "/schedules", "/about").permitAll()
+                .antMatchers("/", "/index","/leagues", "/schedules", "/about").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/registerUser").permitAll()
@@ -56,7 +56,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/leagues/**").hasAuthority("ADMIN")
                 .antMatchers("/admin/games/**").hasAnyAuthority("ADMIN", "LEAGUE_MANAGER")
                 .antMatchers("/admin/teams/**").hasAnyAuthority("ADMIN", "LEAGUE_MANAGER")
-                .antMatchers("/admin/roster/**").hasAnyAuthority("ADMIN", "CAPTAIN")
                 .antMatchers("/admin/roster/**").hasAnyAuthority("ADMIN", "CAPTAIN")
                 .antMatchers("/admin/profile/**").hasAnyAuthority("ADMIN", "LEAGUE_MANAGER", "CAPTAIN", "PLAYER")
                 .anyRequest()

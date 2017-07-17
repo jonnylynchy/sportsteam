@@ -1,4 +1,4 @@
-package com.java3.controller;
+package com.java3.controller.rest;
 
 import com.java3.model.League;
 import com.java3.model.Team;
