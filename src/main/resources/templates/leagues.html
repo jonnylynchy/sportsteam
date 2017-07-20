@@ -8,7 +8,8 @@
         <h2>Leagues</h2>
         <p>
             <div th:each="league: ${leagueList}">
-                <h4 th:text="${league.label}"></h4>
+                <h3 th:text="${league.leagueType.label}"></h3>
+                <h5 th:text="${league.label}"></h5>
                 <p th:text="${league.description}"></p>
             </div>
         </p>
