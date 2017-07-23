@@ -5,19 +5,18 @@
 <th:block th:replace="fragments/header :: header">Header</th:block>
 <div class="container">
     <div>
-        <h2>Leagues</h2>
+        <h2 th:text="${league.label}"></h2>
         <div class="d-flex flex-row align-items-stretch">
-            <div class="p-2 card" style="margin-right:10px; width: 20rem;" th:each="league: ${leagueList}">
+            <div class="p-2 card" style="margin-right:10px; width: 20rem;" th:each="team: ${teamList}">
                 <div class="card-block">
                     <h4 class="card-title" >
-                        <span th:text="${league.leagueType.label}">League Type</span>
+                        <span th:text="${team.name}">Team Name</span>
                         <i class="demo-icon" th:classappend="|icon-${league.leagueType.label.toLowerCase()}|"></i>
                     </h4>
-                    <h5 th:text="${league.label}">League Label</h5>
                     <p>
-                        <div th:text="${league.description}">League Description</div>
+                        <div th:text="${team.description}">Team Description</div>
                     </p>
-                    <a th:href="|/leagues/${league.leagueId}|" class="btn btn-primary">League Info and Teams</a>
+                    <a th:href="|/teams/${team.teamId}|" class="btn btn-primary">Team Info</a>
                 </div>
             </div>
         </div>
