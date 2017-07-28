@@ -26,7 +26,7 @@
                             <div class="card-block">
                                 <h4 class="card-title" th:text="${team.name}"></h4>
                                 <p class="card-text" th:text="${team.description}"></p>
-                                <a th:href="|/teams/${team.teamId}|" class="btn btn-primary">Team Info</a>
+                                <a th:href="|@{/teams/}${team.teamId}|" class="btn btn-primary">Team Info</a>
                             </div>
                         </div>
                     </div>
