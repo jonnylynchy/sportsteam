@@ -12,10 +12,40 @@
         </div>
         <div class="col-9">
             <h4>Roster</h4>
-            <p>coming...</p>
+            <p></p>
+            <hr>
+            <form autocomplete="off" action="#" th:action="@{/admin/roster/save}" method="post" class="form-horizontal" role="form">
+
+                <div class="form-group leagues">
+                    <label for="inputLeague">League</label>
+                    <select class="form-control" id="inputLeague">
+                        <option value="">Select League</option>
+                        <option th:each="leagueObj : ${leagueList}" th:value="${leagueObj.leagueId}" th:text="${leagueObj.label}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group teams hide">
+                    <label for="inputTeam">Home Team</label>
+                    <select class="form-control" id="inputTeam">
+                        <option value="">Select Team</option>
+                    </select>
+                </div>
+
+                <div class="form-group players hide">
+                    <label for="inputTeam">Players</label>
+                    <div class="playerList"></div>
+                </div>
+
+                <hr>
+                <div class="btn-toolbar float-right">
+                    <button type="submit" name="action" class="btn btn-link" value="cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary disabled" disabled="disabled">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <th:block th:replace="fragments/footer :: footer"></th:block>
+<script th:src="@{/js/admin/roster.js}"></script>
 </body>
 </html>
