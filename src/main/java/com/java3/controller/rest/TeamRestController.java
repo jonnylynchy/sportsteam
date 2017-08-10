@@ -1,8 +1,6 @@
 package com.java3.controller.rest;
 
-import com.java3.model.League;
-import com.java3.model.Team;
-import com.java3.model.User;
+import com.java3.model.*;
 import com.java3.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +25,9 @@ public class TeamRestController {
     private LeagueRepository leagueRepository;
 
     @Autowired
+    private LeagueTypePositionRepository leagueTypePositionRepository;
+
+    @Autowired
     private PlayerRepository playerRepository;
 
     @RequestMapping(value = "teams", method =RequestMethod.GET )
@@ -46,6 +47,12 @@ public class TeamRestController {
         Team team = teamRepository.findOne(id);
         List<Player> playerList = playerRepository.findPlayersByTeams(team);
         return playerList;
+    }
+
+    @RequestMapping(value = "player/{id}", method =RequestMethod.GET)
+    public LeagueTypePosition getPlayerPosition(@PathVariable int id) {
+        LeagueTypePosition position = leagueTypePositionRepository.findOne(id);
+        return position;
     }
 
     @RequestMapping(value = "teams/{id}", method = RequestMethod.GET)

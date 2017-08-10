@@ -1,7 +1,9 @@
 package com.java3.repository;
 
+import com.java3.model.LeagueTypePosition;
 import com.java3.model.Role;
 import com.java3.model.Team;
+import com.java3.model.User;
 
 import java.util.Set;
 
@@ -15,5 +17,6 @@ public interface Player {
     // Have nested exception with these (do we need?):
     // Set<Role> getRoles();
     // Set<Team> getTeams();
+    // Set<LeagueTypePosition> getPositions();
     String getEmail();
 }

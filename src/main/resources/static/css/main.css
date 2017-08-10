@@ -11,8 +11,18 @@ button {
 }
 
 /* Boostrap Overrides */
+.card {
+    width: 700px;
+}
+
 img.card-img-top {
-    max-width: 1200px;
+    max-width: 700px;
+}
+
+.carousel.slide {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .carousel-control {

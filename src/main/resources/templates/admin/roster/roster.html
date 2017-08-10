@@ -11,11 +11,12 @@
             <th:block th:replace="fragments/adminMenu :: adminMenu"></th:block>
         </div>
         <div class="col-9">
+
             <h4>Roster</h4>
             <p></p>
+            <div class="alert alert-success" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
             <hr>
             <form autocomplete="off" action="#" th:action="@{/admin/roster/save}" method="post" class="form-horizontal" role="form">
-
                 <div class="form-group leagues">
                     <label for="inputLeague">League</label>
                     <select class="form-control" id="inputLeague">

@@ -4,10 +4,15 @@
 <body>
 <th:block th:replace="fragments/header :: header">Header</th:block>
 <div class="container">
-    <div>
+    <div th:if="${team != null}">
         <h2 th:text="${team.name}"></h2>
         <div class="d-flex flex-row align-items-stretch">
             ...
+        </div>
+    </div>
+    <div th:if="${team == null}">
+        <div class="alert alert-warning" role="alert">
+            Couldn't find that team.
         </div>
     </div>
 </div>

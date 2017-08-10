@@ -8,7 +8,8 @@
         leagueSelect = leaguesContainer.find('select'),
         teamSelect = teamsContainer.find('select'),
         leagueId = 0,
-        btnSubmit = $('button.btn-primary');
+        btnSubmit = $('button.btn-primary'),
+        positionsHolder = $('<select></select>');
 
     leagueSelect.change(function() {
         if($(this).val() !== "") {
@@ -18,6 +19,7 @@
         } else {
             teamsContainer.addClass('hide');
         }
+        playersContainer.addClass('hide');
         validateSubmit();
     });
 
@@ -39,7 +41,7 @@
             // teamListInput.val(team1Select.val() + ',' + team2Select.val());
 
             // Disable for now...
-            // enableSubmit();
+            enableSubmit();
         } else {
             disableSubmit();
         }
@@ -62,6 +64,7 @@
                 $.each( data, function( key, team ) {
                     items.push('<option value="'+ team.teamId + '">' + team.name + '</option>');
                 });
+                fetchPositions(data[0].league.leagueType.typeId);
             }
             // TODO: maybe add a message for no teams if non exist?
             // else {
@@ -69,7 +72,20 @@
             // }
 
             $(teamSelector).html(items.join( "" ));
-            validateSubmit();
+
+            //validateSubmit();
+
+        });
+    }
+
+    function fetchPositions(leagueTypeId) {
+        $.getJSON( "/api/v1/positions/leagueType/" + leagueTypeId, function( data ) {
+            console.log(data);
+            var items = ['<option selected>Position</option>'];
+            $.each( data, function( key, position ) {
+                items.push('<option value="'+ position.positionId +'">' + position.label + '</option>')
+            });
+            positionsHolder.html(items.join( "" ));
         });
     }
 
@@ -78,7 +94,8 @@
             var items = [];
             if(data.length > 0) {
                 $.each( data, function( key, player ) {
-                    items.push('<div value="'+ player.userId + '">' + player.firstName + ' ' + player.lastName + '</div>');
+                    items.push('<div class="row" value="'+ player.id + '"><div class="col-8">' + player.firstName + ' ' + player.lastName +
+                        '</div><div class="col-4 text-right"><select class="custom-select" name="'+ player.id +'">' + positionsHolder.html() + '</select></div></div>');
                 });
             } else {
                 items.push('<div>There are no players on this team</div>');

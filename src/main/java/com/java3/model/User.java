@@ -68,6 +68,12 @@ public class User {
     @JoinTable(name = "user_game", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Set<Game> games;
 
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "user_position",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "position_id"))
+    private Set<LeagueTypePosition> positions;
+
     public int getId() {
         return id;
     }
@@ -138,5 +144,13 @@ public class User {
 
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
+    }
+
+    public void setPositions(Set<LeagueTypePosition> positions) {
+        this.positions = positions;
+    }
+
+    public Set<LeagueTypePosition> getPositions() {
+        return positions;
     }
 }

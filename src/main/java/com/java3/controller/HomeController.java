@@ -1,6 +1,5 @@
 package com.java3.controller;
 
-import java.util.Comparator;
 import com.java3.model.League;
 import com.java3.repository.LeagueRepository;
 import com.java3.repository.TeamRepository;
@@ -57,11 +56,19 @@ public class HomeController {
         viewModel.setViewName("league-detail");
         return viewModel;
     }
-
-    @RequestMapping(value="/teams/{id}")
+    @RequestMapping(value={"/teams/{id}"})
     public ModelAndView teamsDetail(@PathVariable("id") int id) {
         ModelAndView viewModel = new ModelAndView();
         Team team = teamRepository.findOne(id);
+        viewModel.addObject("team", team);
+        viewModel.setViewName("team-detail");
+        return viewModel;
+    }
+
+    @RequestMapping(value={"/team/{teamName}"})
+    public ModelAndView teamsDetail(@PathVariable("teamName") String teamName) {
+        ModelAndView viewModel = new ModelAndView();
+        Team team = teamRepository.findTeamByName(teamName);
         viewModel.addObject("team", team);
         viewModel.setViewName("team-detail");
         return viewModel;
