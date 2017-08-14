@@ -1,5 +1,5 @@
 INSERT INTO league (type_id, label, description)
-VALUES (1, 'Micro Brewery Basketball', 'Beer League Basketball');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'Micro Brewery Basketball', 'Beer League Basketball');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Dribbling Fools', 'Dribbling Champs of the Beer League', 2011, (SELECT league_id FROM league WHERE label = 'Micro Brewery Basketball'));
@@ -16,7 +16,7 @@ VALUES ('The Warthogs', 'Our Odor Is Our Best Defense', 2011, (SELECT league_id 
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (1, 'New York State Basketball League', 'Minor League Basketball');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'New York State Basketball League', 'Minor League Basketball');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Generals', 'Leading The Way', 2011, (SELECT league_id FROM league WHERE label = 'New York State Basketball League'));
@@ -32,7 +32,7 @@ VALUES ('Space Jam 2', 'We Couldnt Get The Toons', 2008, (SELECT league_id FROM 
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (2, 'Micro Brewery Baseball', 'Beer League Baseball');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), 'Micro Brewery Baseball', 'Beer League Baseball');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('4th Base', 'We Prefer To Stay Home', 2018, (SELECT league_id FROM league WHERE label = 'Micro Brewery Baseball'));
@@ -48,7 +48,7 @@ VALUES ('The Umpire Strikes Back', 'I Thought We Had Them', 1982, (SELECT league
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (2, 'Pacific Coast Baseball League', 'West Coast Minor League Baseball');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), 'Pacific Coast Baseball League', 'West Coast Minor League Baseball');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Generals', 'Leading The Way', 2011, (SELECT league_id FROM league WHERE label = 'Pacific Coast Baseball League'));
@@ -64,7 +64,7 @@ VALUES ('The Warthogs', 'Where is the Ball?', 2009, (SELECT league_id FROM leagu
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (2, 'Mile High Baseball', 'More Home Runs With Less Effort');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), 'Mile High Baseball', 'More Home Runs With Less Effort');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('Genesis', 'Oldies But Goodies', 2014, (SELECT league_id FROM league WHERE label = 'Mile High Baseball'));
@@ -81,7 +81,7 @@ VALUES ('The Denver Outlaws', 'We Always Steal the Game', 2009, (SELECT league_i
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (3, 'Little Tykes Soccer', 'Learn The Game, Save The Day');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Little Tykes Soccer', 'Learn The Game, Save The Day');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('Westminster All-Stars', 'Running for Our Parents', 2010, (SELECT league_id FROM league WHERE label = 'Little Tykes Soccer'));
@@ -98,7 +98,7 @@ VALUES ('The Klondike', 'Were Here for a Klondike Bar', 2008, (SELECT league_id 
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (3, 'Long Legged Soccer', 'Drama on the Field, With Running');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Long Legged Soccer', 'Drama on the Field, With Running');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Sentinels', 'Whiney Pros Can Stay Home', 2000, (SELECT league_id FROM league WHERE label = 'Long Legged Soccer'));
@@ -115,7 +115,7 @@ VALUES ('The Comeback Kids', 'We Used to be Good', 2006, (SELECT league_id FROM 
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (4, 'Mile High Football', 'Free Tank of O2 with Every Touchdown');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Mile High Football', 'Free Tank of O2 with Every Touchdown');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Old Dogs', 'Old And Broken Is Our Way Of Life', 1982, (SELECT league_id FROM league WHERE label = 'Mile High Football'));
@@ -132,7 +132,7 @@ VALUES ('Turrainasaurus Rex', 'We Can Run but We Cant Grab the Ball', 2009, (SEL
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (4, 'Any Given Saturday', 'Because the Pros Claimed Sundays');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Any Given Saturday', 'Because the Pros Claimed Sundays');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Sharks', 'Win or Move to Vegas', 1999, (SELECT league_id FROM league WHERE label = 'Any Given Saturday'));
@@ -149,7 +149,7 @@ VALUES ('The Crazy Runners', 'You Will Never Know Where We Will Be', 2008, (SELE
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (5, 'Micro Brewery Kickball League Dallas', 'Adult, Co-ed, Cup-In-Hand-Required League');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Micro Brewery Kickball League Dallas', 'Adult, Co-ed, Cup-In-Hand-Required League');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Bacon Kickers', 'Kicking Balls And Eating Bacon', 2014, (SELECT league_id FROM league WHERE label = 'Micro Brewery Kickball League Dallas'));
@@ -165,7 +165,7 @@ VALUES ('Dont Stop Ballieving', 'Now Its Stuck In Your Head Too', 1986, (SELECT 
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (5, 'Micro Brewery Kickball League Denver', 'Adult, Co-ed, Cup-In-Hand-Required League');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Micro Brewery Kickball League Denver', 'Adult, Co-ed, Cup-In-Hand-Required League');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Bacon Kickers', 'Kicking Balls And Eating Bacon', 2012, (SELECT league_id FROM league WHERE label = 'Micro Brewery Kickball League Denver'));
@@ -181,7 +181,7 @@ VALUES ('One Kick Wonders', 'We Had A Great Kick...Once', 1992, (SELECT league_i
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (6, 'Colorado United Lacrosse League', 'Lacrosse For All Ages');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Lacrosse'), 'Colorado United Lacrosse League', 'Lacrosse For All Ages');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('Genesis', 'Oldies But Goodies', 2014, (SELECT league_id FROM league WHERE label = 'Colorado United Lacrosse League'));
@@ -198,7 +198,7 @@ VALUES ('The Glory Days', 'We Are Probably Too Old For This Stuff', 2009, (SELEC
 
 
 INSERT INTO league (type_id, label, description)
-VALUES (6, 'Mile High Lacrosse', 'Thin Air Lacrosse League of the West');
+VALUES ((SELECT type_id FROM league_type WHERE label = 'Lacrosse'), 'Mile High Lacrosse', 'Thin Air Lacrosse League of the West');
 
 INSERT INTO team (team_name, team_description, year_formed, league_id)
 VALUES ('The Dragoons', 'No Experience, No Problem', 2015, (SELECT league_id FROM league WHERE label = 'Mile High Lacrosse'));
