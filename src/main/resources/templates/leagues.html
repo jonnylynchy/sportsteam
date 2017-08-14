@@ -6,20 +6,23 @@
 <div class="container">
     <div>
         <h2>Leagues</h2>
-        <div class="d-flex flex-row align-items-stretch">
-            <div class="p-2 card" style="margin-right:10px; width: 20rem;" th:each="league: ${leagueList}">
-                <div class="card-block">
-                    <h4 class="card-title" >
-                        <span th:text="${league.leagueType.label}">League Type</span>
-                        <i class="demo-icon" th:classappend="|icon-${league.leagueType.label.toLowerCase()}|"></i>
-                    </h4>
-                    <h5 th:text="${league.label}">League Label</h5>
-                    <p>
+        <div th:each="leagueType: ${leagueTypes}" style="margin-top:25px;">
+            <h4>
+                <span th:text="${leagueType.label}"></span>
+                <i class="demo-icon" th:classappend="|icon-${leagueType.label.toLowerCase()}|"></i>
+            </h4>
+            <div class="d-flex align-content-center flex-wrap" th:with="key=${leagueType.label}">
+                <div class="p-2 card" style="margin-right:10px; width: 20rem; margin-bottom:10px;" th:each="league: ${leagueList}" th:if="${league.leagueType.label == key}">
+                    <div class="card-block">
+                        <h5 th:text="${league.label}">League Label</h5>
+                        <p>
                         <div th:text="${league.description}">League Description</div>
-                    </p>
-                    <a th:href="|/leagues/${league.leagueId}|" class="btn btn-primary">League Info and Teams</a>
+                        </p>
+                        <a th:href="|/leagues/${league.leagueId}|" class="btn btn-primary">League Info and Teams</a>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

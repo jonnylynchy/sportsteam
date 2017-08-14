@@ -80,12 +80,21 @@
 
     function fetchPositions(leagueTypeId) {
         $.getJSON( "/api/v1/positions/leagueType/" + leagueTypeId, function( data ) {
-            console.log(data);
             var items = ['<option selected>Position</option>'];
             $.each( data, function( key, position ) {
                 items.push('<option value="'+ position.positionId +'">' + position.label + '</option>')
             });
             positionsHolder.html(items.join( "" ));
+        });
+    }
+
+    function fetchPlayerPositions(playerId) {
+        // console.log("fetching positions for: ", playerId);
+        $.getJSON( "/api/v1/player/" + playerId + "/position/", function( data ) {
+            var $playerPositionSelect = $('.playerList').find('.row[value="'+ playerId +'"]').find('select');
+            if(data.length > 0) {
+                $playerPositionSelect.find('option[value="'+ data[0].positionId +'"]').prop('selected', true);
+            }
         });
     }
 
@@ -95,7 +104,9 @@
             if(data.length > 0) {
                 $.each( data, function( key, player ) {
                     items.push('<div class="row" value="'+ player.id + '"><div class="col-8">' + player.firstName + ' ' + player.lastName +
-                        '</div><div class="col-4 text-right"><select class="custom-select" name="'+ player.id +'">' + positionsHolder.html() + '</select></div></div>');
+                        '</div><div class="col-4 text-right"><select class="custom-select" name="'+ player.id +'">' + positionsHolder.html() + '</select></div></div>' +
+                        '<div class="row"><div class="col-12"><hr></div></div>');
+                    fetchPlayerPositions(player.id);
                 });
             } else {
                 items.push('<div>There are no players on this team</div>');

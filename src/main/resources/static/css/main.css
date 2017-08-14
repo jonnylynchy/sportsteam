@@ -10,6 +10,11 @@ button {
     cursor: pointer;
 }
 
+/*.playerList .row {*/
+    /*padding-bottom: 6px;*/
+    /*margin-bottom: 6px;*/
+/*}*/
+
 /* Boostrap Overrides */
 .card {
     width: 700px;

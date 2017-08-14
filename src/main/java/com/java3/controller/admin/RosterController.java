@@ -29,10 +29,10 @@ public class RosterController {
     private TeamRepository teamRepository;
 
     @Autowired
-    private LeagueRepository leagueRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private LeagueRepository leagueRepository;
 
     @Autowired
     private LeagueTypePositionRepository leagueTypePositionRepository;
