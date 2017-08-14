@@ -11,16 +11,16 @@ SET n=48;
 SET i=0;
 WHILE i<n DO
   # insert player
-  INSERT INTO `sports-web`.user (active, email, last_name, first_name, password)
+  INSERT INTO user (active, email, last_name, first_name, password)
   VALUES (1, CONCAT('player_',i,'@email.com'), 'Smith', CONCAT('Player',i), 'Temp123');
 
   # insert user role
-  INSERT INTO `sports-web`.user_role (user_id, role_id)
-  VALUES ((SELECT user_id FROM `sports-web`.user WHERE email = CONCAT('player_',i,'@email.com')), 4);
+  INSERT INTO user_role (user_id, role_id)
+  VALUES ((SELECT user_id FROM user WHERE email = CONCAT('player_',i,'@email.com')), 4);
 
   # insert user league
-  INSERT INTO `sports-web`.user_league (user_id, league_id)
-  VALUES ((SELECT user_id FROM `sports-web`.user WHERE email = CONCAT('player_',i,'@email.com')), (SELECT league_id FROM `sports-web`.league WHERE label = 'Micro Brewery Basketball'));
+  INSERT INTO user_league (user_id, league_id)
+  VALUES ((SELECT user_id FROM user WHERE email = CONCAT('player_',i,'@email.com')), (SELECT league_id FROM league WHERE label = 'Micro Brewery Basketball'));
 
   # insert user team
   # Will do manually

@@ -8,62 +8,62 @@ CREATE TABLE IF NOT EXISTS `league_type_position` (
 ) ENGINE=InnoDB;
 
 # Basketball
-INSERT INTO league_type_position (league_type_id, label) VALUES (1, 'Centre');
-INSERT INTO league_type_position (league_type_id, label) VALUES (1, 'Point Guard');
-INSERT INTO league_type_position (league_type_id, label) VALUES (1, 'Power Forward');
-INSERT INTO league_type_position (league_type_id, label) VALUES (1, 'Short Forward');
-INSERT INTO league_type_position (league_type_id, label) VALUES (1, 'Shooting Guard');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'Centre');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'Point Guard');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'Power Forward');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'Short Forward');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'Shooting Guard');
 
 # Baseball
-INSERT INTO league_type_position (league_type_id, label) VALUES (2, 'Pitcher');
-INSERT INTO league_type_position (league_type_id, label) VALUES (2, 'Catcher');
-INSERT INTO league_type_position (league_type_id, label) VALUES (2, 'Outfielder');
-INSERT INTO league_type_position (league_type_id, label) VALUES (2, 'Short Stop');
-INSERT INTO league_type_position (league_type_id, label) VALUES (2, '1st Base');
-INSERT INTO league_type_position (league_type_id, label) VALUES (2, '2nd Base');
-INSERT INTO league_type_position (league_type_id, label) VALUES (2, '3rd Base');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), 'Pitcher');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), 'Catcher');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), 'Outfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), 'Short Stop');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), '1st Base');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), '2nd Base');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Baseball'), '3rd Base');
 
 # Soccer
-INSERT INTO league_type_position (league_type_id, label) VALUES (3, 'Forward');
-INSERT INTO league_type_position (league_type_id, label) VALUES (3, 'Right Back');
-INSERT INTO league_type_position (league_type_id, label) VALUES (3, 'Right Midfielder');
-INSERT INTO league_type_position (league_type_id, label) VALUES (3, 'Defensive Midfielder');
-INSERT INTO league_type_position (league_type_id, label) VALUES (3, 'Goalkeeper');
-INSERT INTO league_type_position (league_type_id, label) VALUES (3, 'Striker');
-INSERT INTO league_type_position (league_type_id, label) VALUES (3, 'Left Midfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Forward');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Right Back');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Right Midfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Defensive Midfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Goalkeeper');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Striker');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Soccer'), 'Left Midfielder');
 
 # Football
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Center');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Offensive guard');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Offensive tackle');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Quarterback');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Running back');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Wide receiver');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Tight end');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Defensive tackle');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Defensive end');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Middle linebacker');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Outside linebacker');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Cornerback');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Safety');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Nickelback');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Kicker');
-INSERT INTO league_type_position (league_type_id, label) VALUES (4, 'Punter');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Center');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Offensive guard');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Offensive tackle');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Quarterback');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Running back');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Wide receiver');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Tight end');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Defensive tackle');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Defensive end');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Middle linebacker');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Outside linebacker');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Cornerback');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Safety');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Nickelback');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Kicker');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Football'), 'Punter');
 
 # Kickball // from soccer
-INSERT INTO league_type_position (league_type_id, label) VALUES (5, 'Forward');
-INSERT INTO league_type_position (league_type_id, label) VALUES (5, 'Right Back');
-INSERT INTO league_type_position (league_type_id, label) VALUES (5, 'Right Midfielder');
-INSERT INTO league_type_position (league_type_id, label) VALUES (5, 'Defensive Midfielder');
-INSERT INTO league_type_position (league_type_id, label) VALUES (5, 'Goalkeeper');
-INSERT INTO league_type_position (league_type_id, label) VALUES (5, 'Striker');
-INSERT INTO league_type_position (league_type_id, label) VALUES (5, 'Left Midfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Forward');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Right Back');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Right Midfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Defensive Midfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Goalkeeper');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Striker');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Kickball'), 'Left Midfielder');
 
 # Lacrosse
-INSERT INTO league_type_position (league_type_id, label) VALUES (6, 'Attack');
-INSERT INTO league_type_position (league_type_id, label) VALUES (6, 'Defense');
-INSERT INTO league_type_position (league_type_id, label) VALUES (6, 'Midfielder');
-INSERT INTO league_type_position (league_type_id, label) VALUES (6, 'Goalie');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Lacrosse'), 'Attack');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Lacrosse'), 'Defense');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Lacrosse'), 'Midfielder');
+INSERT INTO league_type_position (league_type_id, label) VALUES ((SELECT type_id FROM league_type WHERE label = 'Lacrosse'), 'Goalie');
 
 CREATE TABLE IF NOT EXISTS `user_position` (
   `user_position_id` INT(11) NOT NULL AUTO_INCREMENT,
