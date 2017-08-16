@@ -1,5 +1,6 @@
 package com.java3.model;
 
+import com.java3.repository.Player;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
@@ -41,7 +42,11 @@ public class Team {
     @JoinTable(name = "team_game",
             joinColumns = @JoinColumn(name = "team_id"),
             inverseJoinColumns = @JoinColumn(name = "game_id"))
-    private Set<Game> games;
+    public Set<Game> games;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_team", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    public Set<User> players;
 
     public Team() { }
 

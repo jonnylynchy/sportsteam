@@ -6,9 +6,46 @@
 <div class="container">
     <div th:if="${team != null}">
         <h2 th:text="${team.name}"></h2>
-        <div class="d-flex flex-row align-items-stretch">
-            ...
-        </div>
+        <hr>
+        <h4>Upcoming Games</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Team</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="game: ${team.games}">
+                <td th:text="${#calendars.format(game.dateTime,'MMMM dd yyyy hh:mm a')}">Date</td>
+                <td th:text="${game.gameLocation.locationLabel}">Location</td>
+                <td th:each="gameTeam: ${game.teams}" th:unless="${gameTeam.teamId == team.teamId}">
+                    <a th:href="|/teams/${gameTeam.teamId}|" th:text="${gameTeam.name}">League Info and Teams</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h4>Roster</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>Position</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="player: ${team.players}">
+                <td th:text="|${player.firstName} ${player.lastName}|"></td>
+                <td>
+                    <div th:each="position: ${player.positions}">
+                        <span th:text="${position.label}"></span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <div th:if="${team == null}">
         <div class="alert alert-warning" role="alert">
