@@ -10,6 +10,22 @@ button {
     cursor: pointer;
 }
 
+td.gameStatus {
+    color: #fff;
+}
+
+td.gameStatus.win {
+    background: #5cb85c;
+}
+
+td.gameStatus.loss {
+    background: #d9534f;
+}
+
+td.gameStatus.draw {
+    background: #777;
+}
+
 /*.playerList .row {*/
     /*padding-bottom: 6px;*/
     /*margin-bottom: 6px;*/

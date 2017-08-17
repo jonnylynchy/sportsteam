@@ -1,5 +1,7 @@
 package com.java3.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -31,6 +33,7 @@ public class Game {
     @JoinTable(name = "team_game",
             joinColumns = @JoinColumn(name = "game_id"),
             inverseJoinColumns = @JoinColumn(name = "team_id"))
+    @JsonManagedReference
     private Set<Team> teams;
 
     @ManyToMany(cascade = CascadeType.ALL)

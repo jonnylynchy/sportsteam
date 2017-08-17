@@ -1,5 +1,7 @@
 package com.java3.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 /**
@@ -15,14 +17,18 @@ public class TeamGame {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "game_id")
+    @JsonBackReference
     private Game game;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
-    private Team team;
+    @JsonBackReference
+    public Team team;
 
     @Column(name = "score")
-    private int score;
+    public int score;
+
+    public int getTeamId() { return team.getTeamId(); }
 
     public Game getGame() {
         return game;

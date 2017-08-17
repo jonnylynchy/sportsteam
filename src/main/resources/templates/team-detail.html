@@ -5,15 +5,18 @@
 <th:block th:replace="fragments/header :: header">Header</th:block>
 <div class="container">
     <div th:if="${team != null}">
-        <h2 th:text="${team.name}"></h2>
+        <h2 th:text="${team.name}" th:attr="data-teamId=${team.teamId}"></h2>
         <hr>
-        <h4>Upcoming Games</h4>
+
+        <h4>Games</h4>
         <table class="table">
-            <thead>
+            <thead class="thead-default">
             <tr>
                 <th>Date</th>
                 <th>Location</th>
                 <th>Team</th>
+                <th>Score</th>
+                <th width="25">W/L</th>
             </tr>
             </thead>
             <tbody>
@@ -23,13 +26,15 @@
                 <td th:each="gameTeam: ${game.teams}" th:unless="${gameTeam.teamId == team.teamId}">
                     <a th:href="|/teams/${gameTeam.teamId}|" th:text="${gameTeam.name}">League Info and Teams</a>
                 </td>
+                <td th:attr="data-gameId=${game.gameId}" class="teamGame"></td>
+                <td class="gameStatus"></td>
             </tr>
             </tbody>
         </table>
-        <hr>
+
         <h4>Roster</h4>
-        <table class="table">
-            <thead>
+        <table class="table table-bordered">
+            <thead class="thead-default">
             <tr>
                 <th>Player</th>
                 <th>Position</th>
@@ -54,5 +59,6 @@
     </div>
 </div>
 <th:block th:replace="fragments/footer :: footer">Footer</th:block>
+<script th:src="@{/js/team-detail.js}"></script>
 </body>
 </html>

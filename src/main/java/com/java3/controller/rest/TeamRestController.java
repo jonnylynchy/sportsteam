@@ -30,6 +30,9 @@ public class TeamRestController {
     @Autowired
     private PlayerRepository playerRepository;
 
+    @Autowired
+    private TeamGameRepository teamGameRepository;
+
     @RequestMapping(value = "teams", method =RequestMethod.GET )
     public List<Team> list() {
         return teamRepository.findAll();
@@ -53,6 +56,12 @@ public class TeamRestController {
     public LeagueTypePosition getPlayerPosition(@PathVariable int id) {
         LeagueTypePosition position = leagueTypePositionRepository.findOne(id);
         return position;
+    }
+
+    @RequestMapping(value = "game/{id}", method = RequestMethod.GET)
+    public List<TeamGame> getTeamGames(@PathVariable int id) {
+        List<TeamGame> teamGames = teamGameRepository.findByGameId(id);
+        return teamGames;
     }
 
     @RequestMapping(value = "teams/{id}", method = RequestMethod.GET)
