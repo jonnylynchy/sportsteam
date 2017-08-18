@@ -6,14 +6,29 @@
     ;
 
     function populateTeamGames() {
+        var gameIds = [];
         $gameTDs.each(function(idx){
-            gameId = $(this).attr('data-gameId');
-            fetchTeamGames(gameId, $(this));
+            var gameId = $(this).attr('data-gameId');
+            gameIds.push({gameId: gameId, container: $(this)});
         });
+        timeOutGetGames(gameIds);
     }
 
-    function fetchTeamGames(gameId, $container) {
-        var scoreObj = {},
+    function timeOutGetGames(gameIds) {
+        console.log('fetching games...');
+        if(gameIds.length > 0) {
+            var gameToFetch = gameIds.pop();
+            setTimeout(function(){
+                timeOutGetGames(gameIds);
+            }, 500);
+            fetchTeamGames(gameToFetch);
+        }
+    }
+
+    function fetchTeamGames(gameToFetch) {
+        var gameId = gameToFetch.gameId,
+            $container = gameToFetch.container,
+            scoreObj = {},
             gameStatus = "",
             teamStyle = "",
             $statusTd = $container.next(),

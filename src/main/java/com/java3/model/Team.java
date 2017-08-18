@@ -40,13 +40,11 @@ public class Team {
     @NotNull(message = "*Please provide a league")
     private League league;
 
-    @JsonIgnore
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "team_game",
             joinColumns = @JoinColumn(name = "team_id"),
             inverseJoinColumns = @JoinColumn(name = "game_id"))
-    @JsonManagedReference
-    public Set<Game> games;
+    private Set<Game> games;
 
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
@@ -104,4 +102,12 @@ public class Team {
     public void setLeague(League league) {
         this.league = league;
     }
+
+    @JsonIgnore
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "team_game",
+            joinColumns = @JoinColumn(name = "team_id"),
+            inverseJoinColumns = @JoinColumn(name = "game_id"))
+    @JsonManagedReference
+    public Set<Game> getGames() { return games; }
 }
