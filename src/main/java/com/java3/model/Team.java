@@ -1,5 +1,6 @@
 package com.java3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.java3.repository.Player;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -39,6 +40,7 @@ public class Team {
     @NotNull(message = "*Please provide a league")
     private League league;
 
+    @JsonIgnore
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "team_game",
             joinColumns = @JoinColumn(name = "team_id"),
@@ -46,6 +48,7 @@ public class Team {
     @JsonManagedReference
     public Set<Game> games;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_team", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     public Set<User> players;
