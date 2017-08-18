@@ -15,7 +15,14 @@
         roleChecks = rolesContainer.find('input[type="radio"]'),
         hasLeague = false,
         hasTeam = false,
+        showTeams = false,
         originalTeamId;
+
+    roleChecks.each(function(){
+        if(this.checked && ($(this).val() == 4 || $(this).val() == 3)){
+            showTeams = true;
+        }
+    });
 
     teamRadios.each(function() {
         if(this.checked) {
@@ -27,6 +34,9 @@
     leagueRadios.each(function() {
         if(this.checked) {
             hasLeague = true;
+            if(showTeams) {
+                teamsContainer.removeClass('hide');
+            }
         }
         $(this).change(function(){
             teamsContainer.find('.teamList').remove();
