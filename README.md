@@ -1,6 +1,6 @@
 # Sports Team Website
 
-This is a Spring Boot application that serves a static website and a SpringMVC REST API. 
+This is a Spring Boot application that serves both Spring MVC models/views, and a SpringMVC REST API. 
 
 ## Installation Steps
 - Clone this branch into your projects directory: 
