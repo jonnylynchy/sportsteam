@@ -1,11 +1,11 @@
 # Sports Team Website
 
-This is a Spring Boot application that serves a static website and a SpringMVC REST API. 
+This is a Spring Boot application that serves both Spring MVC models/views, and a SpringMVC REST API. 
 
 ## Installation Steps
-
 - Clone this branch into your projects directory: 
 `git clone https://github.com/jonnylynchy/sportsteam.git`
+- Create a local MySQL database
 - Import project into IntelliJ
 	- File > New > Project from existing sources
 	- Navigate to sportsteam directory
@@ -15,6 +15,8 @@ This is a Spring Boot application that serves a static website and a SpringMVC R
 	- Right-click on folder and select "maven" from the menu > "clean install"
 - You should see a terminal open with build output
 - Once that is complete you should see "SUCCESS"
+- Edit application-local.properties
+	- Edit the datasource url, username, and password for both spring (top of file) and flyway (bottom of file) for your local database you just created.
 - Now you should should be able to create a run configuration: 
 	- General Instructions: https://www.jetbrains.com/help/idea/creating-and-editing-run-debug-configurations.html
 	- You should see a button with a down arrow in the top right area of IntelliJ.
@@ -22,6 +24,8 @@ This is a Spring Boot application that serves a static website and a SpringMVC R
 	- Choose "spring boot" in the type menu from the "+" button.
 	- In the name field, enter "Sports Team Web" or whatever you wish.
 	- Select the "App" class from "..." button next to  the main class field.
+	- In VM options, enter "-Dspring.profiles.active=local".
+	- Be sure to choose 1.8 SDK in the JRE options.
 	- Hit the "apply" and "OK" buttons.
 - You should be able to run the project now by clicking on the green play icon directly next to the configuration dropdown in the top right area.
 - If you didn't receive any errors in the terminal,  navigate to http://localhost:8080 in your browser.
