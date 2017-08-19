@@ -1,3 +1,7 @@
+/*
+ Contains all the javascript for the team-detail page
+ - Gets All the games for team
+ */
 (function () {
     var window = this,
         $ = window.jQuery,
@@ -14,6 +18,12 @@
         timeOutGetGames(gameIds);
     }
 
+    /**
+     * Needed to add a timeout here to throttle requests to the database.
+     * This worked fine locally without a throttle, on server there is some MySQL server setting to
+     * reject reads that are too close together
+     * @param gameIds
+     */
     function timeOutGetGames(gameIds) {
         console.log('fetching games...');
         if(gameIds.length > 0) {

@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 /**
  * Created by jon.lynch on 7/12/17.
+ *
+ * Entity class for GameLocation
  */
 @Entity
 @Table(name = "game_location")
@@ -36,6 +38,8 @@ public class GameLocation {
 
     @Column(name = "location_zip_postal")
     private String locationZipPostal;
+
+    // GETTERS AND SETTERS
 
     public int getGameLocationId() {
         return gameLocationId;

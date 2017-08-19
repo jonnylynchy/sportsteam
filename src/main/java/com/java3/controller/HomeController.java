@@ -17,9 +17,13 @@ import java.util.List;
 
 /**
  * Created by jon.lynch on 6/21/17.
+ *
+ * This class contains all the public page methods
  */
 @Controller
 public class HomeController {
+
+    // Necessary Repositories
 
     @Autowired
     private TeamRepository teamRepository;
@@ -30,6 +34,10 @@ public class HomeController {
     @Autowired
     private LeagueTypeRepository leagueTypeRepository;
 
+    /**
+     * Index Page (displays a simple view with a carousel of all teams
+     * @return
+     */
     @RequestMapping(value={"/", "/index"})
     public ModelAndView index() {
         ModelAndView viewModel = new ModelAndView();
@@ -39,6 +47,11 @@ public class HomeController {
         return viewModel;
     }
 
+    /**
+     * Main Leagues page (list view by league type)
+     * Using lambdas here for sorting
+     * @return
+     */
     @RequestMapping(value="/leagues")
     public ModelAndView leagues() {
         ModelAndView viewModel = new ModelAndView();
@@ -57,6 +70,11 @@ public class HomeController {
         return viewModel;
     }
 
+    /**
+     * View league info for a given league
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/leagues/{id}")
     public ModelAndView leagueDetail(@PathVariable("id") int id) {
         ModelAndView viewModel = new ModelAndView();
@@ -68,6 +86,12 @@ public class HomeController {
         viewModel.setViewName("league-detail");
         return viewModel;
     }
+
+    /**
+     * View Team info for a given team
+     * @param id
+     * @return
+     */
     @RequestMapping(value={"/teams/{id}"})
     public ModelAndView teamsDetail(@PathVariable("id") int id) {
         ModelAndView viewModel = new ModelAndView();
@@ -77,6 +101,7 @@ public class HomeController {
         return viewModel;
     }
 
+    // View Team info for a given team by team name
     @RequestMapping(value={"/team/{teamName}"})
     public ModelAndView teamsDetail(@PathVariable("teamName") String teamName) {
         ModelAndView viewModel = new ModelAndView();
@@ -86,6 +111,10 @@ public class HomeController {
         return viewModel;
     }
 
+    /**
+     * View schedules
+     * @return
+     */
     @RequestMapping(value="/schedules")
     public ModelAndView schedules() {
         ModelAndView viewModel = new ModelAndView();
@@ -93,6 +122,10 @@ public class HomeController {
         return viewModel;
     }
 
+    /**
+     * View about page/info
+     * @return
+     */
     @RequestMapping(value="/about")
     public ModelAndView about() {
         ModelAndView viewModel = new ModelAndView();
@@ -100,6 +133,11 @@ public class HomeController {
         return viewModel;
     }
 
+    /**
+     * If a user attempts to view a page they are not authenticated to view,
+     * we show an access-denied page.
+     * @return
+     */
     @RequestMapping(value="/access-denied")
     public ModelAndView accessDenied() {
         ModelAndView viewModel = new ModelAndView();

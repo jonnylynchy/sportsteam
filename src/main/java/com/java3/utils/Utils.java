@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Created by jon.lynch on 7/5/17.
+ *
+ * This class contains utility methods needed throughout the application
  */
 public class Utils {
 

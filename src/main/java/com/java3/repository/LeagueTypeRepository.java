@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Created by jon.lynch on 6/28/17.
+ *
+ * JPA Repository Interface for LeagueType
  */
 @Repository("leagueTypeRepositoryMain")
 public interface LeagueTypeRepository extends JpaRepository<LeagueType, Integer> {

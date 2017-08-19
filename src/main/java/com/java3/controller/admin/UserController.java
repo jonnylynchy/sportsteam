@@ -25,10 +25,14 @@ import java.util.Set;
 
 /**
  * Created by jon.lynch on 7/2/17.
+ *
+ * This controller contains all the methods for user-related pages in admin
  */
 @Controller
 @RequestMapping("admin/")
 public class UserController {
+
+    // Necessary Repositories
 
     @Autowired
     private UserRepository userRepository;
@@ -42,9 +46,14 @@ public class UserController {
     @Autowired
     private TeamRepository teamRepository;
 
+    // Needed password encoder here for new users save
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Users List: View
+     * @return
+     */
     @RequestMapping(value={"/users"}, method = RequestMethod.GET)
     public ModelAndView users() {
         ModelAndView viewModel = new ModelAndView();
@@ -56,6 +65,10 @@ public class UserController {
         return viewModel;
     }
 
+    /**
+     * Users Add: View
+     * @return
+     */
     @RequestMapping(value="/users/add", method = RequestMethod.GET)
     public ModelAndView userNew() {
         ModelAndView viewModel = new ModelAndView();
@@ -73,6 +86,13 @@ public class UserController {
         return viewModel;
     }
 
+    /**
+     * Users Add: Post
+     * @param userObj
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/users/add", method = RequestMethod.POST)
     public ModelAndView saveNew(@Valid @ModelAttribute("userObj") User userObj, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
@@ -93,6 +113,13 @@ public class UserController {
         return viewModel;
     }
 
+    /**
+     * Users Edit: Post
+     * @param userObj
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/users/edit", method = RequestMethod.POST)
     public ModelAndView saveEdit(@Valid @ModelAttribute("userObj") User userObj, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
@@ -112,6 +139,11 @@ public class UserController {
         return viewModel;
     }
 
+    /**
+     * Users Edit: View
+     * @param id
+     * @return
+     */
     @RequestMapping(value={"/users/edit/{id}"}, method = RequestMethod.GET)
     public ModelAndView userEdit(@PathVariable("id") int id) {
         ModelAndView viewModel = new ModelAndView();
@@ -137,6 +169,10 @@ public class UserController {
         return viewModel;
     }
 
+    /**
+     * Handles cancel Request, redirects to list view
+     * @return
+     */
     @RequestMapping(value = {"/users/edit", "/users/add"}, method = RequestMethod.POST, params="action=cancel")
     public ModelAndView cancel() {
         return new ModelAndView("redirect:/admin/users");

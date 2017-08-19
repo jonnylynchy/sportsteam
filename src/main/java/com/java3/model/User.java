@@ -2,6 +2,8 @@ package com.java3.model;
 
 /**
  * Created by jon.lynch on 6/24/17.
+ *
+ * Entity Class for User
  */
 import java.util.Set;
 
@@ -76,6 +78,8 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "position_id"))
     private Set<LeagueTypePosition> positions;
+
+    // GETTERS AND SETTERS
 
     public int getId() {
         return id;

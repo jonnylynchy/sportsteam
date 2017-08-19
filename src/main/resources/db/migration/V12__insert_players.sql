@@ -1,3 +1,8 @@
+/*
+MIGRATION SCRIPT:
+  Seeds data for fake players (by using a stored procedure)
+*/
+
 DROP PROCEDURE IF EXISTS CREATEPLAYERS;
 DELIMITER ;;
 

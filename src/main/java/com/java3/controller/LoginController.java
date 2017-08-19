@@ -2,6 +2,8 @@ package com.java3.controller;
 
 /**
  * Created by jon.lynch on 6/24/17.
+ *
+ * This class contains all the page methods for login
  */
 import javax.validation.Valid;
 
@@ -21,9 +23,14 @@ import com.java3.service.UserService;
 @Controller
 public class LoginController {
 
+    // User service for login user data
     @Autowired
     private UserService userService;
 
+    /**
+     * Login Page: View
+     * @return
+     */
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
@@ -31,6 +38,10 @@ public class LoginController {
         return modelAndView;
     }
 
+    /**
+     * Registration Page (hidden)
+     * @return
+     */
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -39,6 +50,12 @@ public class LoginController {
         return modelAndView;
     }
 
+    /**
+     * Register User: Post
+     * @param userObj
+     * @param bindingResult
+     * @return
+     */
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     public ModelAndView registerUser(@Valid @ModelAttribute("userObj")User userObj, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
@@ -60,6 +77,10 @@ public class LoginController {
         return modelAndView;
     }
 
+    /**
+     * Admin Home page: View
+     * @return
+     */
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();

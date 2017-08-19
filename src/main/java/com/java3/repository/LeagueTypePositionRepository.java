@@ -9,8 +9,12 @@ import java.util.List;
 
 /**
  * Created by jon.lynch on 8/5/17.
+ *
+ * JPA Repository Interface for LeagueTypePosition
  */
 @Repository("leagueTypePositionRepositoryMain")
 public interface LeagueTypePositionRepository extends JpaRepository<LeagueTypePosition, Integer> {
+
+    // Custom method to find positions by league type
     List<LeagueTypePosition> findByLeagueType(LeagueType leagueType);
 }

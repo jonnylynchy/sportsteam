@@ -8,6 +8,8 @@ import java.util.Date;
 
 /**
  * Created by jon.lynch on 8/5/17.
+ *
+ * Entity Class For LeagueTypePosition
  */
 
 @Entity
@@ -29,6 +31,8 @@ public class LeagueTypePosition {
 
     @Column(name = "created_at")
     private Date createdAt;
+
+    // GETTERS
 
     // These positions are pre-populated and do not need setters
     public int getPositionId() {

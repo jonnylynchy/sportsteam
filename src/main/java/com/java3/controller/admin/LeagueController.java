@@ -18,16 +18,25 @@ import java.util.List;
 
 /**
  * Created by jon.lynch on 6/27/17.
+ *
+ * This controller contains all the methods for league-related pages in admin
  */
 @Controller
 @RequestMapping("admin/")
 public class LeagueController {
+
+    // Necessary Repositories for Leagues
+
     @Autowired
     private LeagueRepository leagueRepository;
 
     @Autowired
     private LeagueTypeRepository leagueTypeRepository;
 
+    /**
+     * Main League View (returns list of leagues in view)
+     * @return
+     */
     @RequestMapping(value={"/leagues"}, method = RequestMethod.GET)
     public ModelAndView leagues() {
         ModelAndView viewModel = new ModelAndView();
@@ -37,6 +46,10 @@ public class LeagueController {
         return viewModel;
     }
 
+    /**
+     * Add League Page: View
+     * @return
+     */
     @RequestMapping(value="/leagues/add", method = RequestMethod.GET)
     public ModelAndView leagueNew() {
         ModelAndView viewModel = new ModelAndView();
@@ -51,6 +64,13 @@ public class LeagueController {
         return viewModel;
     }
 
+    /**
+     * Add A New League: Post
+     * @param league
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/leagues/add", method = RequestMethod.POST)
     public ModelAndView saveNew(@Valid League league, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
@@ -66,6 +86,11 @@ public class LeagueController {
         return viewModel;
     }
 
+    /**
+     * League Edit: View
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/leagues/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") int id) {
         ModelAndView viewModel = new ModelAndView();
@@ -80,6 +105,13 @@ public class LeagueController {
         return viewModel;
     }
 
+    /**
+     * League Edit: Post
+     * @param league
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/leagues/edit", method = RequestMethod.POST)
     public ModelAndView save(@Valid League league, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
@@ -95,11 +127,21 @@ public class LeagueController {
         return viewModel;
     }
 
+    /**
+     * Handles cancel request out of edit or add, redirects to main list view
+     * @return
+     */
     @RequestMapping(value = {"/leagues/edit", "/leagues/add"}, method = RequestMethod.POST, params="action=cancel")
     public ModelAndView cancel() {
         return new ModelAndView("redirect:/admin/leagues");
     }
 
+    /**
+     * Handles Deletion of League
+     * @param id
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/leagues/delete/{id}", method = RequestMethod.GET)
     public ModelAndView leagueArchive(@PathVariable("id") int id, RedirectAttributes redirectAttrs) {
         League league = leagueRepository.findOne(id);

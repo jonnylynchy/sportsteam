@@ -1,3 +1,7 @@
+/*
+ Contains all the javascript for the roster (edit) page
+*/
+
 (function () {
     var window = this,
         $ = window.jQuery,

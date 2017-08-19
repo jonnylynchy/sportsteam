@@ -21,16 +21,25 @@ import java.util.List;
 
 /**
  * Created by jon.lynch on 7/5/17.
+ *
+ * This controller contains all the methods for team-related pages in admin
  */
 @Controller
 @RequestMapping("admin/")
 public class TeamController {
+
+    // Necessary Repositories
+
     @Autowired
     private TeamRepository teamRepository;
 
     @Autowired
     private LeagueRepository leagueRepository;
 
+    /**
+     * Teams List: View
+     * @return
+     */
     @RequestMapping(value={"/teams"}, method = RequestMethod.GET)
     public ModelAndView teams() {
         ModelAndView viewModel = new ModelAndView();
@@ -40,6 +49,10 @@ public class TeamController {
         return viewModel;
     }
 
+    /**
+     * Team Add: View
+     * @return
+     */
     @RequestMapping(value="/teams/add", method = RequestMethod.GET)
     public ModelAndView teamNew() {
         ModelAndView viewModel = new ModelAndView();
@@ -57,6 +70,13 @@ public class TeamController {
         return viewModel;
     }
 
+    /**
+     * Team Add: Post
+     * @param team
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/teams/add", method = RequestMethod.POST)
     public ModelAndView saveNew(@Valid Team team, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
@@ -75,6 +95,11 @@ public class TeamController {
         return viewModel;
     }
 
+    /**
+     * Team Edit: View
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/teams/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") int id) {
         ModelAndView viewModel = new ModelAndView();
@@ -92,6 +117,13 @@ public class TeamController {
         return viewModel;
     }
 
+    /**
+     * Team Edit: Post
+     * @param team
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/teams/edit", method = RequestMethod.POST)
     public ModelAndView save(@Valid Team team, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
@@ -110,6 +142,10 @@ public class TeamController {
         return viewModel;
     }
 
+    /**
+     * Handles cancel request, redirects to list view
+     * @return
+     */
     @RequestMapping(value = {"/teams/edit", "/teams/add"}, method = RequestMethod.POST, params="action=cancel")
     public ModelAndView cancel() {
         return new ModelAndView("redirect:/admin/teams");

@@ -1,3 +1,8 @@
+/*
+MIGRATION SCRIPT:
+  Creates the game_location, game, and team_game tables
+*/
+
 CREATE TABLE `game_location` (
   `game_location_id` int(11) NOT NULL AUTO_INCREMENT,
   `location_label` VARCHAR(100) NOT NULL,

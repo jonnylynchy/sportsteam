@@ -1,3 +1,9 @@
+/*
+MIGRATION SCRIPT:
+  Sets up the league and league_type tables
+  Seeds data for league_type
+*/
+
 CREATE TABLE IF NOT EXISTS `league_type` (
   `type_id` INT(11) NOT NULL AUTO_INCREMENT,
   `label` VARCHAR(100) NOT NULL,

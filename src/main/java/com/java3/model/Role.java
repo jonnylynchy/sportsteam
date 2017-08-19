@@ -2,6 +2,8 @@ package com.java3.model;
 
 /**
  * Created by jon.lynch on 6/24/17.
+ *
+ * Entity Class for Role
  */
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +21,8 @@ public class Role {
     private int id;
     @Column(name="role")
     private String role;
+
+    // GETTERS AND SETTERS
 
     public int getId() {
         return id;

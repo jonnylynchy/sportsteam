@@ -1,3 +1,6 @@
+/*
+Contains all the javascript for the game-edit page
+ */
 (function () {
     var window = this,
         $ = window.jQuery,

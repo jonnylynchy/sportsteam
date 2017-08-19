@@ -13,11 +13,14 @@ import java.util.List;
 /**
  * Created by jon.lynch on 6/21/17.
  *
- * TEMP STUB VALUES FOR NOW, WE WILL WIRE THIS UP TO MYSQL THROUGH JPA
+ * This class exposes JSON lists to HTTP requests (via javascript) for Team Information
  */
 @RestController
 @RequestMapping("/api/v1/")
 public class TeamRestController {
+
+    // Necessary Repositories
+
     @Autowired
     private TeamRepository teamRepository;
 
@@ -33,11 +36,20 @@ public class TeamRestController {
     @Autowired
     private TeamGameRepository teamGameRepository;
 
+    /**
+     * List of all teams
+     * @return
+     */
     @RequestMapping(value = "teams", method =RequestMethod.GET )
     public List<Team> list() {
         return teamRepository.findAll();
     }
 
+    /**
+     * List of all teams by league
+     * @param leagueId
+     * @return
+     */
     @RequestMapping(value = "teams/league/{leagueId}", method =RequestMethod.GET)
     public List<Team> listByLeagueId(@PathVariable int leagueId) {
         League league = leagueRepository.findOne(leagueId);
@@ -45,6 +57,11 @@ public class TeamRestController {
         return teamList;
     }
 
+    /**
+     * List of all players by team
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "teams/{id}/players/", method =RequestMethod.GET)
     public List<Player> playerListByTeamId(@PathVariable int id) {
         Team team = teamRepository.findOne(id);
@@ -52,18 +69,33 @@ public class TeamRestController {
         return playerList;
     }
 
+    /**
+     * Returns a particular position (from player's position id)
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "player/{id}", method =RequestMethod.GET)
     public LeagueTypePosition getPlayerPosition(@PathVariable int id) {
         LeagueTypePosition position = leagueTypePositionRepository.findOne(id);
         return position;
     }
 
+    /**
+     * Returns a list of all "TeamGames" by a game id (both teams will be returned here for score on both sides)
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "game/{id}", method = RequestMethod.GET)
     public List<TeamGame> getTeamGames(@PathVariable int id) {
         List<TeamGame> teamGames = teamGameRepository.findByGameId(id);
         return teamGames;
     }
 
+    /**
+     * Returns a given team's info
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "teams/{id}", method = RequestMethod.GET)
     public Team get(@PathVariable int id) {
         return teamRepository.findOne(id);

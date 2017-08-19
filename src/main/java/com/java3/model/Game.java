@@ -10,6 +10,8 @@ import java.util.Set;
 
 /**
  * Created by jon.lynch on 7/12/17.
+ *
+ * Entity Class for Game
  */
 @Entity
 @Table(name = "game")
@@ -30,6 +32,9 @@ public class Game {
     @Column(name = "created_at")
     private Date createdAt;
 
+    /**
+     * team_game is a join table because a game has 2 teams and we need to know score for both
+     */
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "team_game",
             joinColumns = @JoinColumn(name = "game_id"),
@@ -37,19 +42,34 @@ public class Game {
     @JsonManagedReference
     private Set<Team> teams;
 
+    /**
+     * List of users associated with game
+     */
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_game", joinColumns = @JoinColumn(name = "game_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
+    /**
+     * Default Constructor
+     */
     public Game() { }
 
+    /**
+     * Constructor with parameters
+     * @param gameLocation
+     * @param teams
+     * @param users
+     * @param dateTime
+     */
     public Game(GameLocation gameLocation, Set<Team> teams, Set<User> users, Date dateTime) {
         this.gameLocation = gameLocation;
         this.teams = teams;
         this.users = users;
         this.dateTime = dateTime;
     }
+
+    // GETTERS AND SETTERS
 
     public int getGameId() {
         return gameId;
@@ -59,6 +79,10 @@ public class Game {
         this.gameId = gameId;
     }
 
+    /**
+     * A Game has one location, a location has many games
+     * @return
+     */
     @ManyToOne
     @JoinColumn(name = "game_location_id")
     public GameLocation getGameLocation() {

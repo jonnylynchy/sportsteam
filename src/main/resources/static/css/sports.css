@@ -1,3 +1,7 @@
+/*
+This sets up some styles to use the icon fonts for sports teams
+ */
+
 @font-face {
   font-family: 'sports';
   src: url('../fonts/sports.eot?46107572');

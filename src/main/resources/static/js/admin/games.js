@@ -1,3 +1,7 @@
+/*
+ Contains all the javascript for the game-new page
+ */
+
 (function () {
     var window = this,
         $ = window.jQuery,

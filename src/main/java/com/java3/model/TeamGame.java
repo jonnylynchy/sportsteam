@@ -6,6 +6,9 @@ import javax.persistence.*;
 
 /**
  * Created by jon.lynch on 7/15/17.
+ *
+ * Entity Class for TeamGame
+ * Teams have many games and games have 2 teams each.
  */
 @Entity
 @Table(name = "team_game")
@@ -27,6 +30,8 @@ public class TeamGame {
 
     @Column(name = "score")
     public int score;
+
+    // GETTERS AND SETTERS
 
     public int getTeamId() { return team.getTeamId(); }
 

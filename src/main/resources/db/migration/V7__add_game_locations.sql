@@ -1,3 +1,8 @@
+/*
+MIGRATION SCRIPT:
+  Seeds data for game_location
+*/
+
 INSERT INTO game_location (
   location_label, location_description, location_street_address_1, location_city,
   location_state_province, location_country, location_zip_postal

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Created by jon.lynch on 7/12/17.
+ *
+ * JPA Repository Interface for Game
  */
 @Repository("gameRepositoryMain")
 public interface GameRepository extends JpaRepository<Game, Integer> {

@@ -13,18 +13,32 @@ import java.util.List;
 
 /**
  * Created by jon.lynch on 7/4/17.
+ *
+ * This class exposes JSON lists to HTTP requests (via javascript) for League Information
  */
 @RestController
 @RequestMapping("/api/v1/")
 public class LeagueRestController {
+
+    // Necessary Repositories
+
     @Autowired
     private LeagueRepository leagueRepository;
 
+    /**
+     * List of Leagues (Array of Objects in JSON)
+     * @return
+     */
     @RequestMapping(value = "leagues", method = RequestMethod.GET )
     public List<League> list() {
         return leagueRepository.findAll();
     }
 
+    /**
+     * Detailed League Info
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "leagues/{id}", method = RequestMethod.GET)
     public League get(@PathVariable int id) {
         return leagueRepository.findOne(id);

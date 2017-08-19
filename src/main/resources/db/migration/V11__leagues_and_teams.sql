@@ -1,3 +1,8 @@
+/*
+MIGRATION SCRIPT:
+  Seeds data for leagues and teams
+*/
+
 INSERT INTO league (type_id, label, description)
 VALUES ((SELECT type_id FROM league_type WHERE label = 'Basketball'), 'Micro Brewery Basketball', 'Beer League Basketball');
 

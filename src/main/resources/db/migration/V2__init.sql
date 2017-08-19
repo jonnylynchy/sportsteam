@@ -1,3 +1,11 @@
+/*
+
+MIGRATION SCRIPT:
+
+  Sets up the initial user and role tables
+
+*/
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `role` (

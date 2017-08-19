@@ -9,6 +9,8 @@ import java.util.Set;
 
 /**
  * Created by jon.lynch on 7/27/17.
+ *
+ * Custom Interface to Map a "Player" class to User to limit exposure of user properties (implemented in PlayerRepository)
  */
 public interface Player {
     String getId();

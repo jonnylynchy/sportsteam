@@ -9,6 +9,8 @@ import java.util.Date;
 
 /**
  * Created by jon.lynch on 6/27/17.
+ *
+ * Entity Class For League
  */
 @Entity
 @Table(name = "league")
@@ -40,6 +42,8 @@ public class League {
         this.description = description;
         this.leagueType = leagueType;
     }
+
+    // GETTERS AND SETTERS
 
     public int getLeagueId() {
         return leagueId;

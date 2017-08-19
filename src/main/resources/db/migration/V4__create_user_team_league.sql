@@ -1,3 +1,8 @@
+/*
+MIGRATION SCRIPT:
+  Creates the team, user_team, and user_league tables
+*/
+
 CREATE TABLE `team` (
   `team_id` int(11) NOT NULL AUTO_INCREMENT,
   `team_name` VARCHAR(100) NOT NULL,

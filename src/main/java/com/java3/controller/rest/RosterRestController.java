@@ -18,12 +18,14 @@ import java.util.Set;
 
 /**
  * Created by jon.lynch on 8/5/17.
+ *
+ * This class exposes JSON lists to HTTP requests (via javascript) for Roster Information
  */
 @RestController
 @RequestMapping("/api/v1/")
 public class RosterRestController {
-    @Autowired
-    private LeagueRepository leagueRepository;
+
+    // Necessary Repositories
 
     @Autowired
     private LeagueTypeRepository leagueTypeRepository;
@@ -34,6 +36,11 @@ public class RosterRestController {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * This returns a list of all positions for a given LeagueType
+     * @param leagueTypeId
+     * @return
+     */
     @RequestMapping(value = "positions/leagueType/{leagueTypeId}", method = RequestMethod.GET)
     public List<LeagueTypePosition> positionListByLeagueId(@PathVariable int leagueTypeId) {
         LeagueType leagueType = leagueTypeRepository.findOne(leagueTypeId);
@@ -41,6 +48,11 @@ public class RosterRestController {
         return positionList;
     }
 
+    /**
+     * This returns the list of positions set for a given player
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "player/{id}/position", method = RequestMethod.GET)
     public Set<LeagueTypePosition> getPlayerPositions(@PathVariable int id) {
         User player = userRepository.findOne(id);

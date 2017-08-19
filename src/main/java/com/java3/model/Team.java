@@ -13,6 +13,8 @@ import java.util.Set;
 
 /**
  * Created by jon.lynch on 6/21/17.
+ *
+ * Entity Class For Team
  */
 @Entity
 @Table(name = "team")
@@ -40,12 +42,18 @@ public class Team {
     @NotNull(message = "*Please provide a league")
     private League league;
 
+    /**
+     * A Team has many games, represented in a join tabl
+     */
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "team_game",
             joinColumns = @JoinColumn(name = "team_id"),
             inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Set<Game> games;
 
+    /**
+     * A Team has many players (users) represented in a join table
+     */
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_team", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
@@ -60,6 +68,8 @@ public class Team {
         this.yearFormed = yearFormed;
         this.league = league;
     }
+
+    // GETTERS AND SETTERS
 
     public int getTeamId() {
         return teamId;

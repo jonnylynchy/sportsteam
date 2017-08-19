@@ -1,3 +1,9 @@
+/*
+MIGRATION SCRIPT:
+  Creates the league_type_position and user_position table
+  Seeds data for positions
+*/
+
 CREATE TABLE IF NOT EXISTS `league_type_position` (
   `position_id` INT(11) NOT NULL AUTO_INCREMENT,
   `league_type_id` INT(11) NOT NULL,

@@ -19,11 +19,16 @@ import javax.validation.Valid;
 
 /**
  * Created by jon.lynch on 7/6/17.
+ *
+ * This controller contains all the methods for profile-related pages in admin
  */
 
 @Controller
 @RequestMapping("admin/")
 public class ProfileController {
+
+    // Necessary Repositories
+
     @Autowired
     private UserRepository userRepository;
 
@@ -33,6 +38,10 @@ public class ProfileController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Gathers profile related data and displays to user
+     * @return
+     */
     @RequestMapping(value={"profile/"}, method = RequestMethod.GET)
     public ModelAndView profileEdit() {
         ModelAndView viewModel = new ModelAndView();
@@ -46,6 +55,13 @@ public class ProfileController {
         return viewModel;
     }
 
+    /**
+     * Profile Edit: Post
+     * @param userObj
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value = "profile/", method = RequestMethod.POST)
     public ModelAndView registerUser(@Valid @ModelAttribute("userObj")User userObj, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView modelAndView = new ModelAndView();
@@ -78,6 +94,10 @@ public class ProfileController {
         return modelAndView;
     }
 
+    /**
+     * Handles a cancel request from profile
+     * @return
+     */
     @RequestMapping(value = {"/profile/"}, method = RequestMethod.POST, params="action=cancel")
     public ModelAndView cancel() {
         return new ModelAndView("redirect:/admin/profile/");

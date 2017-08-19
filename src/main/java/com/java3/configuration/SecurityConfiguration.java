@@ -2,6 +2,8 @@ package com.java3.configuration;
 
 /**
  * Created by jon.lynch on 6/24/17.
+ *
+ * This class is the security configuration for accessing resources
  */
 import javax.sql.DataSource;
 
@@ -20,18 +22,35 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    /**
+     * Default Password Encoder (one-way encryption)
+     */
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Main Datasource
+     */
     @Autowired
     private DataSource dataSource;
 
+    /**
+     * Users query for login
+     */
     @Value("${spring.queries.users-query}")
     private String usersQuery;
 
+    /**
+     * Roles query for login and roles-based authentication
+     */
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    /**
+     * Main configuration method for spring security's authentication
+     * @param auth
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -43,6 +62,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 
+    /**
+     * Main configuration method HTTP access to specific paths and resources
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -66,6 +90,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/access-denied");
     }
 
+    /**
+     * Main configuration method for web security to specific assets
+     * @param web
+     * @throws Exception
+     */
     @Override
     public void configure(WebSecurity web) throws Exception {
         web

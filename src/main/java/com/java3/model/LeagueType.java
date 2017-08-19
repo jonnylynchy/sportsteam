@@ -7,6 +7,8 @@ import java.util.Date;
 
 /**
  * Created by jon.lynch on 6/27/17.
+ *
+ * Entity Class For LeagueType
  */
 @Entity
 @Table(name = "league_type")
@@ -23,6 +25,8 @@ public class LeagueType {
 
     @Column(name = "created_at")
     private Date createdAt;
+
+    // GETTERS AND SETTERS
 
     public int getTypeId() {
         return typeId;

@@ -19,14 +19,15 @@ import java.util.*;
 
 /**
  * Created by jon.lynch on 7/9/17.
+ *
+ * This controller contains all the methods for roster-related pages in admin
  */
 
 @Controller
 @RequestMapping("admin/")
 public class RosterController {
 
-    @Autowired
-    private TeamRepository teamRepository;
+    // Necessary Repositories
 
     @Autowired
     private UserRepository userRepository;
@@ -37,6 +38,12 @@ public class RosterController {
     @Autowired
     private LeagueTypePositionRepository leagueTypePositionRepository;
 
+    /**
+     * Gathers initial data for roster view
+     *
+     * NOTE: This page is mostly handled by Javascript ajax requests to api
+     * @return
+     */
     @RequestMapping(value={"roster/"}, method = RequestMethod.GET)
     public ModelAndView rosterIndex() {
         ModelAndView viewModel = new ModelAndView();
@@ -49,6 +56,12 @@ public class RosterController {
         return viewModel;
     }
 
+    /**
+     * Roster Save: Post
+     * @param allRequestParams
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value={"roster/save"}, method = RequestMethod.POST)
     public ModelAndView rosterSave(@RequestParam Map<String,String> allRequestParams, RedirectAttributes redirectAttrs) {
         Iterator it = allRequestParams.entrySet().iterator();
@@ -71,6 +84,10 @@ public class RosterController {
         return new ModelAndView("redirect:/admin/roster/");
     }
 
+    /**
+     * Handles cancel request
+     * @return
+     */
     @RequestMapping(value = {"/roster/save"}, method = RequestMethod.POST, params="action=cancel")
     public ModelAndView cancel() {
         return new ModelAndView("redirect:/admin/roster/");

@@ -1,3 +1,10 @@
+/*
+
+Main CSS file
+- Overrides certain bootstrap styles
+- Sets up default styles
+
+ */
 body {
     padding-top: 5rem;
 }

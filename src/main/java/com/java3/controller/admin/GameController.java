@@ -27,11 +27,15 @@ import java.util.Set;
 
 /**
  * Created by jon.lynch on 7/9/17.
+ *
+ * This controller contains all the methods for game-related pages in admin
  */
 
 @Controller
 @RequestMapping("admin/")
 public class GameController {
+
+    // Necessary Repositories for Games
 
     @Autowired
     private GameRepository gameRepository;
@@ -45,6 +49,10 @@ public class GameController {
     @Autowired
     private TeamGameRepository teamGameRepository;
 
+    /**
+     * Main Game View (returns list of games in view)
+     * @return
+     */
     @RequestMapping(value={"games/"}, method = RequestMethod.GET)
     public ModelAndView gamesIndex() {
         ModelAndView viewModel = new ModelAndView();
@@ -54,6 +62,10 @@ public class GameController {
         return viewModel;
     }
 
+    /**
+     * Add Game Page: View
+     * @return
+     */
     @RequestMapping(value = "games/add", method = RequestMethod.GET)
     public ModelAndView gamesAdd() {
         ModelAndView viewModel = new ModelAndView();
@@ -70,6 +82,13 @@ public class GameController {
         return viewModel;
     }
 
+    /**
+     * Add A New Game: Post
+     * @param game
+     * @param bindingResult
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/games/add", method = RequestMethod.POST)
     public ModelAndView saveNew(@Valid Game game, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         ModelAndView viewModel = new ModelAndView();
@@ -90,6 +109,11 @@ public class GameController {
         return viewModel;
     }
 
+    /**
+     * Game Edit: View
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/games/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") int id) {
         ModelAndView viewModel = new ModelAndView();
@@ -104,6 +128,13 @@ public class GameController {
         return viewModel;
     }
 
+    /**
+     * Game Edit: Post
+     * @param gameId
+     * @param allRequestParams
+     * @param redirectAttrs
+     * @return
+     */
     @RequestMapping(value="/games/edit/{id}", method = RequestMethod.POST)
     public ModelAndView update(@PathVariable("id") int gameId, @RequestParam Map<String,String> allRequestParams, RedirectAttributes redirectAttrs) {
         Iterator it = allRequestParams.entrySet().iterator();
@@ -126,6 +157,10 @@ public class GameController {
         return new ModelAndView("redirect:/admin/games/");
     }
 
+    /**
+     * Handles cancel request out of edit or add, redirects to main list view
+     * @return
+     */
     @RequestMapping(value = {"/games/edit/{id}", "/games/add"}, method = RequestMethod.POST, params="action=cancel")
     public ModelAndView cancel() {
         return new ModelAndView("redirect:/admin/games/");

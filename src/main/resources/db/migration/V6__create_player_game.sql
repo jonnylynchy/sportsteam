@@ -1,3 +1,8 @@
+/*
+MIGRATION SCRIPT:
+  Creates the user_game table
+*/
+
 CREATE TABLE `user_game` (
   `user_game_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,

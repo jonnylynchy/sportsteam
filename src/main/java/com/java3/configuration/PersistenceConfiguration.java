@@ -11,6 +11,8 @@ import javax.sql.DataSource;
 
 /**
  * Created by jon.lynch on 6/15/17.
+ *
+ * This Class is a security configuration class for both the spring datasource and flyway db migrations
  */
 @Configuration
 public class PersistenceConfiguration {

@@ -1,3 +1,6 @@
+/*
+ Contains all the javascript for the users add/edit pages
+*/
 (function () {
     var window = this,
         $ = window.jQuery,
