@@ -16,7 +16,7 @@ This is a Spring Boot application that serves a static website and a SpringMVC R
 - You should see a terminal open with build output
 - Once that is complete you should see "SUCCESS"
 - Edit application-local.properties
-	- Edit the datasource url, username, and password for both spring (top of file) and flyway (bottom of file)
+	- Edit the datasource url, username, and password for both spring (top of file) and flyway (bottom of file) for your local database you just created.
 - Now you should should be able to create a run configuration: 
 	- General Instructions: https://www.jetbrains.com/help/idea/creating-and-editing-run-debug-configurations.html
 	- You should see a button with a down arrow in the top right area of IntelliJ.
